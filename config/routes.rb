@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
-   sessions: 'admin/sessions',
-   passwords: 'admin/passwords'
+   sessions: 'admin/admins/sessions',
+   passwords: 'admin/admins/passwords'
   }
+  
   namespace :admin do
    resources :customers, only: %i(show edit update index)
   # resources :questions, only: %i(index destroy)
   end
   devise_for :customers, controllers: {
-    sessions:      'public/sessions',
-    passwords:     'public/passwords',
-    registrations: 'public/registrations'
+    sessions:      'public/customers/sessions',
+    passwords:     'public/customers/passwords',
+    registrations: 'public/customers/registrations'
   }
 
 
