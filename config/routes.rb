@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   devise_for :admins, controllers: {
    sessions: 'admin/sessions',
    passwords: 'admin/passwords'
@@ -18,6 +16,7 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
+    resources :customers ,only: [:index]
     resources :deliverys ,only: [:index, :create, :edit,  :destroy, :update]
     resources :products ,only: [ :index, :show]
     resources :cart_items ,only: [:index, :create, :update, :destroy]
@@ -28,6 +27,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    resources :customers ,only: [:index, :show]
     resources :genres ,only: [:index, :create, :edit, :update]
     resources :products ,only: [:new, :create, :show, :index, :edit, :update]
 
