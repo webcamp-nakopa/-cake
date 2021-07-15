@@ -4,6 +4,7 @@ Rails.application.routes.draw do
    sessions: 'admin/admins/sessions',
    passwords: 'admin/admins/passwords'
   }
+  
   namespace :admin do
    resources :customers, only: %i(show edit update index)
   # resources :questions, only: %i(index destroy)
