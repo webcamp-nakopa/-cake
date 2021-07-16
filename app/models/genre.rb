@@ -1,3 +1,6 @@
 class Genre < ApplicationRecord
-    has_many :products, dependent: :destroy
+
+  validates :name, presence: true, uniqueness: true
+
+  has_many :products, dependent: :destroy
 end
