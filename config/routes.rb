@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    sessions: 'admin/admins/sessions',
    passwords: 'admin/admins/passwords'
   }
-  
+
   namespace :admin do
    resources :customers, only: %i(show edit update index)
   # resources :questions, only: %i(index destroy)
@@ -29,7 +29,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers ,only: [:index, :show]
-    resources :genres ,only: [:index, :create, :edit, :update]
+    resources :genres ,only: [:index, :create, :edit, :update, :destroy]
+    get "/genres/:id", to: "genres#edit"
     resources :products ,only: [:new, :create, :show, :index, :edit, :update]
 
   end
