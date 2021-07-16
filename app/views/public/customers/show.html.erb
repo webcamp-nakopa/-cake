@@ -1,3 +1,5 @@
+<h2>マイページ</h2>
+<%= link_to "Edit", edit_customer_path(@customer) %>
   <%= @customer.last_name %>
   <%= @customer.first_name %>
   <%= @customer.last_name_kana %>
@@ -6,5 +8,9 @@
   <%= @customer.address %>
   <%= @customer.telephone_number %>
   <%= @customer.email %>
+  <%= @customer.is_deleted %>
 
-  <%= link_to "Edit", edit_customer_registration_path(@customer) %>
+<%= link_to '退会する' , customers_confirm_path %>
+
+<P>配送先</P>
+<P>注文履歴</P>
