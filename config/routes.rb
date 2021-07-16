@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :customers ,only: [:index, :show]
     resources :genres ,only: [:index, :create, :edit, :update, :destroy]
     get "/genres/:id", to: "genres#edit"
-    resources :products ,only: [:new, :create, :show, :index, :edit, :update]
+    resources :products ,only: [:new, :create, :show, :index, :edit, :update, :destroy]
 
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

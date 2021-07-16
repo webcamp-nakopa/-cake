@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="mt-5">商品</h2>
+  <h2 class="mt-5">商品一覧</h2>
     <table class="table">
       <thead class="thead-light">
         <tr>
@@ -8,18 +8,31 @@
           <th>税抜価格</th>
           <th>ジャンル</th>
           <th>ステータス</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <%# @products.each do |product| %>
+        <% @products.each do |product| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= product.id %></td>
+          <td><%= link_to product.name, admin_product_path(product) %></td>
+          <td><%= product.price %></td>
+          <td><%= product.genre.name %></td>
+          <td>
+            <% if product.sales_status == true  %>
+              <p class="text-success">販売中</p>
+            <% else %>
+              <p class="text-secondary">販売停止中</p>
+            <% end %>
+          </td>
+          <td>
+            <div class="form-group row">
+              <%= link_to"削除する", admin_product_path(product), class: "text-danger", method: :delete, data: {confirm: "本当に消しますか？"} %>
+            </div>
+          </td>
         </tr>
-        <%# end %>
+        <% end %>
       </tbody>
     </table>
+  <%= paginate @products %>
 </div>
