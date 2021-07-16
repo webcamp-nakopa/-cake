@@ -1,11 +1,11 @@
 <div class="container">
-  <h2 class="mt-5">商品詳細</h2>
+  <h2 class="mt-5">商品新規登録</h2>
 
   <div class="mt-5 mb-5">
-    <%= form_with model: @product, local:true do |f| %>
+    <%= form_with model: @product, url: "/admin/products", local: true do |f| %>
       <div class="form-group row">
-        <%= f.label :image_id, "商品画像", class: "col-sm-2" %>
-        <%#= f.attachment_field :image_id, class: "col-sm-3" %>
+        <%= f.label :image, "商品画像", class: "col-sm-2" %>
+        <%= f.attachment_field :image, class: "col-sm-4 p-0" %>
       </div>
       <div class="form-group row">
         <%= f.label :name, "商品名", class: "col-sm-2" %>
@@ -17,7 +17,7 @@
       </div>
       <div class="form-group row">
         <%= f.label :genre_id, "ジャンル", class: "col-sm-2" %>
-        <%= f.select :genre_id, [["販売中"], ["販売停止"]], include_blank: "選択して下さい", class: "col-sm-3" %>
+        <%= f.collection_select(:genre_id, @genres, :id, :name) %>
       </div>
       <div class="form-group row">
         <%= f.label :price, "税抜価格", class: "col-sm-2" %>
@@ -35,6 +35,6 @@
       </div>
     <% end %>
 
+    </div>
   </div>
-</div>
 </div>
