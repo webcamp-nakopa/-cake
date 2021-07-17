@@ -33,6 +33,33 @@
               <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
               </li>
+              <% if customer_signed_in? %>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#"><%= link_to 'マイページ', customer_path(current_customer) %></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">商品一覧</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">カート</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></a>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#"><%= link_to 'About', homes_about_path %></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">商品一覧</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#"><%= link_to '新規登録', new_customer_registration_path %></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#"><%= link_to 'ログイン', new_customer_session_path %></a>
+                </li>
+              <% end %>
             </ul>
             <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -42,11 +69,12 @@
         </nav>
       </div>
     </header>
-
-    <% if customer_signed_in? %>
-      <p>ログイン中</p>
+    <% if admin_signed_in? %>
+      管理者ログイン中
+      <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
     <% else %>
-      <p>ログアウト中</p>
+      管理者ログアウト中
+      <%= link_to '管理者ログイン', new_admin_session_path %>
     <% end %>
     <%= yield %>
   </body>

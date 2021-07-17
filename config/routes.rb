@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'public/homes#top'
+
   devise_for :admins, controllers: {
    sessions: 'admin/admins/sessions',
    passwords: 'admin/admins/passwords'
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :customers ,only: [:show,:edit,:update]
-    resources :deliverys ,only: [:index, :create, :edit,  :destroy, :update]
+    resources :deliveries ,only: [:index, :create, :edit, :destroy, :update]
     resources :products ,only: [ :index, :show]
     resources :cart_items ,only: [:index, :create, :update, :destroy]
     get 'cart_items/destroy_all'

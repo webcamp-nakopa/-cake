@@ -1,13 +1,10 @@
 <h2>Edit(admin側)</h2>
 
-<%= form_with model: @customer do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer) ,local: true do |f| %>
 
   <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-
-  <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
   </div>
@@ -15,9 +12,6 @@
   <div class="field">
     <%= f.label :last_name_kana %><br />
     <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
-  </div>
-
-  <div class="field">
     <%= f.label :first_name_kana %><br />
     <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
   </div>
@@ -44,13 +38,13 @@
 
   <div class="field">
     <%= f.radio_button :is_deleted, true %>
-    <%= f.label :is_deleted, "退会済", {value: :true, style: "display: inline-block;"} %>
+    <%= f.label :is_deleted, "有効", {value: :true, style: "display: inline-block;"} %>
     <%= f.radio_button :is_deleted, false %>
-    <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+    <%= f.label :is_deleted, "退会済み", {value: :false, style: "display: inline-block;"} %>
   </div>
 
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: "btn btn-success" %>
   </div>
 <% end %>
