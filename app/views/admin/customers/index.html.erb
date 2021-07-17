@@ -1,3 +1,4 @@
+<h2>会員一覧(admin側)</h2>
 <% @customers.each do |customer| %>
 
   <%= customer.last_name %>
@@ -8,5 +9,6 @@
   <%= customer.address %>
   <%= customer.telephone_number %>
   <%= customer.email %>
+  <%= customer.is_deleted %>
 
 <% end %>

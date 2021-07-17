@@ -10,7 +10,7 @@
   <%= @customer.email %>
   <%= @customer.is_deleted %>
 
-<%= link_to '退会する' , customers_confirm_path %>
+<%= link_to '退会する' , customers_confirm_path(@customer) %>
 
 <P>配送先</P>
 <P>注文履歴</P>

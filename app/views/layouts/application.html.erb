@@ -42,6 +42,12 @@
         </nav>
       </div>
     </header>
+
+    <% if customer_signed_in? %>
+      <p>ログイン中</p>
+    <% else %>
+      <p>ログアウト中</p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

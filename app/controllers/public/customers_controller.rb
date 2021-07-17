@@ -8,20 +8,20 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = Customer.find(current_customer.id)
+    @customer = Customer.find(params[:id])
     @customer.update(customer_params)
-    redirect_to customer_path(current_customer.id)
+    redirect_to customer_path(@customer.id)
   end
 
   def confirm
-    @customer = Customer.find_by(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def destroy
-    @customer = Customer.find_by(params[:id])
+    @customer = Customer.find(params[:id])
     @customer.update(deleted_params)
     reset_session
-    redirect_to homes_top_path
+    redirect_to customer_path(@customer.id)
   end
 
   private

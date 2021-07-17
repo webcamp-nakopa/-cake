@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-   resources :customers, only: %i(show edit update index)
+   #resources :customers, only: %i(show edit update index)
   # resources :questions, only: %i(index destroy)
   end
   devise_for :customers, controllers: {
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :customers ,only: [:index, :show]
+    resources :customers ,only: [:index, :show, :edit, :update]
     resources :genres ,only: [:index, :create, :edit, :update, :destroy]
     get "/genres/:id", to: "genres#edit"
     resources :products ,only: [:new, :create, :show, :index, :edit, :update]
