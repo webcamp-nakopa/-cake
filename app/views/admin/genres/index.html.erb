@@ -1,4 +1,3 @@
-<%= link_to"ジャンル一覧", admin_genres_path %>
 <div class="container">
   <h2 class="mt-5">ジャンル一覧・追加</h2>
 
@@ -9,11 +8,11 @@
          <li><%= message %></li>
        <% end %>
       </ul>
-    <div>
+    </div>
   <% end %>
 
   <div>
-    <%= form_with model: @genre, url: "/admin/genres", class: "form-inline", local: true do |f| %>
+    <%= form_with model: @genre, url: "/admin/genres", local: true do |f| %>
       <%= f.label :name, "ジャンル名" %>
       <%= f.text_field :name %>
       <%= f.submit"新規登録", class: "btn btn-success" %>
