@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :customers ,only: [:show]
     resources :deliverys ,only: [:index, :create, :edit,  :destroy, :update]
     resources :products ,only: [ :index, :show]
+    get 'search' => 'products#search'
     resources :cart_items ,only: [:index, :create, :update, :destroy]
     get 'cart_items/destroy_all'
     get 'homes/top'
@@ -32,7 +33,6 @@ Rails.application.routes.draw do
     resources :genres ,only: [:index, :create, :edit, :update, :destroy]
     get "/genres/:id", to: "genres#edit"
     resources :products ,only: [:new, :create, :show, :index, :edit, :update, :destroy]
-
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

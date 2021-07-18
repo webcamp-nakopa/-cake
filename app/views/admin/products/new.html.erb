@@ -1,6 +1,16 @@
 <div class="container">
   <h2 class="mt-5">商品新規登録</h2>
 
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+       <% @product.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="mt-5 mb-5">
     <%= form_with model: @product, url: "/admin/products", local: true do |f| %>
       <div class="form-group row">
