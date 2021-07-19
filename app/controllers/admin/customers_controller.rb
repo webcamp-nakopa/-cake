@@ -1,10 +1,13 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+
   def show
     @customer = Customer.find(params[:id])
   end
 
   def index
     @customers = Customer.all
+     @customer = Customer.new
   end
 
   def edit
@@ -13,8 +16,12 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(admin_customer_params)
-    redirect_to admin_customer_path(@customer.id)
+    if @customer.update(admin_customer_params)
+      flash[:success] = "登録情報を変更しました。"
+      redirect_to admin_customer_path(@customer.id)
+    else
+      render 'edit'
+    end
   end
 
   def search

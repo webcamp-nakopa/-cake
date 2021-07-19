@@ -1,27 +1,34 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+
   def show
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(current_customer.id)
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(current_customer.id)
   end
 
   def update
-    @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-    redirect_to customer_path(@customer.id)
+    @customer = Customer.find(current_customer.id)
+    if @customer.update(customer_params)
+      flash[:success] = "登録情報を変更しました。"
+      redirect_to customer_path(@customer.id)
+    else
+      render 'edit'
+    end
   end
 
   def confirm
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(current_customer.id)
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find(current_customer.id)
     @customer.update(deleted_params)
     reset_session
-    redirect_to customer_path(@customer.id)
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
 
   private
