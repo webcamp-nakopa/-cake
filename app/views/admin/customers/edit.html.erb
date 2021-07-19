@@ -1,7 +1,17 @@
-<h2>新規会員登録</h2>
+<div class="container">
+<h2>Edit(admin側)</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/customers/shared/error_messages", resource: resource %>
+<% if @customer.errors.any? %>
+    <div id="error_explanation">
+     <ul>
+       <% @customer.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_with model: @customer, url: admin_customer_path(@customer) ,local: true do |f| %>
 
   <div class="field">
     <label for="name">名前</label>
@@ -36,24 +46,15 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <label for="is_deleted">会員ステータス</label>
+    <%= f.radio_button :is_deleted, true %>
+    <%= f.label :is_deleted, "有効", {value: :true, style: "display: inline-block;"} %>
+    <%= f.radio_button :is_deleted, false %>
+    <%= f.label :is_deleted, "退会済み", {value: :false, style: "display: inline-block;"} %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Update", class: "btn btn-success" %>
   </div>
 <% end %>
-
-<%= render "public/customers/shared/links" %>
-
-<h2>既に登録済みの方</h2>
-<p><%= link_to 'こちら', new_customer_session_path, class: "btn btn-success" %></p>
+</div>

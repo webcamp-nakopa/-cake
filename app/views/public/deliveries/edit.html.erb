@@ -1,0 +1,24 @@
+<div class="container">
+<h2 class="mt-5">配送先編集</h2>
+
+  <% if @delivery.errors.any? %>
+    <div id="error_explanation">
+     <ul>
+       <% @delivery.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form_with model: @delivery, url: delivery_path, class: "form-inline", local: true, method: :patch do |f| %>
+      <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+      <%= f.text_field :postcode %>
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address %>
+      <%= f.label :name, "宛名" %>
+      <%= f.text_field :name %>
+      <%= f.submit "変更を保存", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
