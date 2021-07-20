@@ -1,0 +1,12 @@
+<div class="col-md-9 col-sm-9 col-xs-9">
+      <h2>商品一覧<span class="small">(全<%= products.count %>件)</span></h2>
+			<div class="row">
+					<% products.each do |product| %>
+					<div class="col-md-3 col-sm-3 col-xs-12">
+            <%= attachment_image_tag product, :image, :fill, 160, 100, format: 'jpeg' %>
+            <p><%= link_to product.name, product_path(product) %></p>
+            <p>¥<%= product.price %></p>
+  				</div>
+				<% end %>
+			</div>
+		</div>
