@@ -19,12 +19,15 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
+
     resources :customers ,only: [:show,:edit,:update]
     resources :deliveries ,only: [:index, :create, :edit, :destroy, :update]
     resources :products ,only: [ :index, :show]
+
     get 'search' => 'products#search'
+    delete '/cart_items/destroy_all'
     resources :cart_items ,only: [:index, :create, :update, :destroy]
-    get 'cart_items/destroy_all'
+
     get '/' => 'homes#top', as: 'homes_top'
     get 'homes/about'
     get 'customers/:id/confirm' => 'customers#confirm', as: 'customers_confirm'
