@@ -13,4 +13,8 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true, format: {with: /\A\d{3}[-]?\d{4}\z/}
   validates :address, presence: true
   validates :telephone_number, presence: true, format: {with: /\A0\d{9,10}\z/}
+
+  def self.search_for(contents)
+    Customer.where("first_name LIKE? OR last_name LIKE? OR first_name_kana LIKE? OR last_name_kana LIKE?", "%#{contents}%", "%#{contents}%", "%#{contents}%", "%#{contents}%")
+  end
 end

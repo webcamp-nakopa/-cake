@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get "/genres/:id", to: "genres#edit"
     resources :products ,only: [:new, :create, :show, :index, :edit, :update, :destroy]
     root to: 'homes#top'
+    get '/search', to: 'searches#search'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
