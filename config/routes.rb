@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+
+
   root to: 'public/homes#top'
 
   devise_for :admins, controllers: {
@@ -19,6 +22,11 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
+    resources :orders ,only: [:new ,:index ,:show ,:create] do
+      collection do
+        post :confirm
+      end
+    end
     resources :customers ,only: [:show,:edit,:update]
     resources :deliveries ,only: [:index, :create, :edit, :destroy, :update]
     resources :products ,only: [ :index, :show]
@@ -33,6 +41,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    resources :orders ,only: [:show,:index]
     resources :customers ,only: [:index, :show, :edit, :update]
     resources :genres ,only: [:index, :create, :edit, :update, :destroy]
     get "/genres/:id", to: "genres#edit"
