@@ -1,0 +1,7 @@
+<% if @model == 'customer' %>
+	<h3>Customers search for "<%= @content %>"</h3>
+  <%= render 'admin/customers/index', customers: @records %>
+<% elsif @model == 'product' %>
+	<h3>Products search for "<%= @content %>"</h3>
+  <%= render 'admin/products/index', products: @records %>
+<% end %>
