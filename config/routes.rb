@@ -1,28 +1,26 @@
 Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
-   sessions: 'admin/admins/sessions',
-   passwords: 'admin/admins/passwords'
+   sessions: 'admin/sessions',
+   passwords: 'admin/passwords'
   }
-
   namespace :admin do
    resources :customers, only: %i(show edit update index)
   # resources :questions, only: %i(index destroy)
   end
   devise_for :customers, controllers: {
-    sessions:      'public/customers/sessions',
-    passwords:     'public/customers/passwords',
-    registrations: 'public/customers/registrations'
+    sessions:      'public/sessions',
+    passwords:     'public/passwords',
+    registrations: 'public/registrations'
   }
 
 
   scope module: :public do
-    resources :customers ,only: [:show]
+    resources :customers ,only: [:index]
     resources :deliverys ,only: [:index, :create, :edit,  :destroy, :update]
-    resources :products ,only: [:index, :show]
-    get 'search' => 'products#search'
-    delete '/cart_items/destroy_all'
+    resources :products ,only: [ :index, :show]
     resources :cart_items ,only: [:index, :create, :update, :destroy]
+    get 'cart_items/destroy_all'
     get 'homes/top'
     get 'homes/about'
   end
@@ -30,9 +28,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers ,only: [:index, :show]
-    resources :genres ,only: [:index, :create, :edit, :update, :destroy]
-    get "/genres/:id", to: "genres#edit"
-    resources :products ,only: [:new, :create, :show, :index, :edit, :update, :destroy]
+    resources :genres ,only: [:index, :create, :edit, :update]
+    resources :products ,only: [:new, :create, :show, :index, :edit, :update]
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
