@@ -1,12 +1,46 @@
-<% @customers.each do |customer| %>
+<div class="container">
+  <h2 class="mt-5">会員一覧(admin側)</h2>
 
-  <%= customer.last_name %>
-  <%= customer.first_name %>
-  <%= customer.last_name_kana %>
-  <%= customer.first_name_kana %>
-  <%= customer.postal_code %>
-  <%= customer.address %>
-  <%= customer.telephone_number %>
-  <%= customer.email %>
+   <% if @customer.errors.any? %>
+    <div id="error_explanation">
+     <ul>
+       <% @customer.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+      </ul>
+    <div>
+  <% end %>
 
-<% end %>
+  <div class="col-md-5">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>ジャンル</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.last_name %></td>
+            <td><%= customer.first_name %></td>
+            <td><%= customer.last_name_kana %></td>
+            <td><%= customer.first_name_kana %></td>
+            <td><%= customer.postal_code %></td>
+            <td><%= customer.address %></td>
+            <td><%= customer.telephone_number %></td>
+            <td><%= customer.email %></td>
+            <td>
+                <% if customer.is_deleted == true %>
+                  <p>有効</p>
+                <% else %>
+                  <p>無効</p>
+                <% end %>
+            </td>
+            <td class="text-center"><p><%= link_to '会員詳細', admin_customer_path(customer.id), class: "btn btn-success" %></p></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
