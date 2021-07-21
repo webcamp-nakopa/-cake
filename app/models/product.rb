@@ -18,7 +18,4 @@ class Product < ApplicationRecord
     where("genre_id LIKE?","#{ids}")
   end
 
-  def self.search_for(contents)
-    Product.where("name LIKE?", "%#{contents}%")
-  end
 end
