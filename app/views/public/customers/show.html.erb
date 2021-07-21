@@ -1,10 +1,37 @@
-  <%= @customer.last_name %>
-  <%= @customer.first_name %>
-  <%= @customer.last_name_kana %>
-  <%= @customer.first_name_kana %>
-  <%= @customer.postal_code %>
-  <%= @customer.address %>
-  <%= @customer.telephone_number %>
-  <%= @customer.email %>
+<div class="container">
+    <h2 class="mt-5">マイページ</h2>
+    <div class="mt-5 mb-5">
+      <div class="form-group row">
+        <%= @customer.last_name %>
+        <%= @customer.first_name %>
+      </div>
+      <div class="form-group row">
+        <%= @customer.last_name_kana %>
+        <%= @customer.first_name_kana %>
+      </div>
+      <div class="form-group row">
+        <%= @customer.postal_code %>
+      </div>
+      <div class="form-group row">
+        <%= @customer.address %>
+      </div>
+      <div class="form-group row">
+        <%= @customer.telephone_number %>
+      </div>
+      <div class="form-group row">
+        <%= @customer.email %>
+      </div>
 
-  <%= link_to "Edit", edit_customer_registration_path(@customer) %>
+      <div class="form-group row">
+        <p><%= link_to "Edit", edit_customer_path(@customer), class: "btn btn-outline-dark" %></p>
+      </div>
+      <div class="form-group row">
+        <p><%= link_to '配送先', deliveries_path, class: "btn btn-outline-dark" %></p>
+      </div>
+      <div class="form-group row">
+        <p>注文履歴</p>
+      </div>
+    </div>
+</div>
+
+

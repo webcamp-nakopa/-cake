@@ -1,0 +1,155 @@
+confirm
+<div class="container mt-5">
+
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+       <% @order.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td>
+          <%= attachment_image_tag cart_item.product, :image, :fill, 60, 40, format: 'jpeg', class: "mr-3" %>
+          <%= cart_item.product.name %>
+        </td>
+        <td>
+          <%= cart_item.product.add_tax_price.to_s(:price)%>
+        </td>
+        <td>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true do |f| %>
+            <%= f.number_field :quantity, min: 1, include_blank: cart_item.quantity.to_s %>
+          <%= f.submit"変更", class: "btn btn-success" %>
+          <% end %>
+        </td>
+        <td>
+          <% @subtotal = cart_item.quantity.to_i * cart_item.product.add_tax_price %>
+          <%= @subtotal %>
+        </td>
+        <td>
+          <%= link_to"削除する", cart_item_path(cart_item), class: "btn btn-danger", method: :delete, data: {confirm: "本当に消しますか？"} %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+
+
+
+  <%= link_to 'new', new_order_path %>
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="row">
+				<table class="table text-center">
+				  <thead>
+				    <th>order.id</th>
+				    <th>customer_id</th>
+				    <th>name</th>
+				    <th>postcode</th>
+				    <th>addres</th>
+				    <th>shipping</th>
+				    <th>payment_methods</th>
+				    <th>total_payment</th>
+				    <th>status</th>
+				    <th>address_kind</th>
+				    <th>created_at</th>
+			  　</thead>
+			    <tbody>
+					  <tr>
+					    <td><%= @order.id%></td>
+					    <td><%= @order.customer_id%></td>
+              <td><%= @order.name %></td>
+              <td><%= @order.postcode %></td>
+              <td><%= @order.address %></td>
+              <td><%= @order.shipping %></td>
+              <td><%= @order.payment_methods %></td>
+              <td><%= @order.total_payment %></td>
+              <td><%= @order.status %></td>
+              <td><%= @order.address_kind %></td>
+              <td><%= @order.created_at %></td>
+					  </tr>
+				  </tbody>
+				</table>
+			</div>
+			<div class="row">
+				<table class="table text-center">
+				  <thead>
+				    <th>cart_item.id</th>
+				    <th>@order.id</th>
+				    <th>cart_item.product_id</th>
+				    <th>cart_item.quantity</th>
+				    <th>cart_item.product.price</th>
+
+			  　</thead>
+			    <tbody>
+			      <% @cart_items.each do |cart_item| %>
+					  <tr>
+					    <td><%= cart_item.id%></td>
+					    <td><%= @order.id%></td>
+              <td><%= cart_item.product_id %></td>
+              <td><%= cart_item.quantity %></td>
+              <td><%= cart_item.product.add_tax_price.to_s(:price) %></td>
+
+					  </tr>
+					  <% end %>
+				  </tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+	<%= form_with model: @order, local: true do |f| %>
+
+      <div class="form-group row">
+
+        <%= f.hidden_field :payment_methods %>
+
+      </div>
+
+      <div class="form-group row">
+
+
+        <%= f.hidden_field :address_kind %>
+
+        <%= f.label :total_payment, "住所" %>
+        <%= f.hidden_field :delivery_id %>
+      </div><div class="form-group row"><div class = "col-sm-2"></div>
+
+
+          <%= f.hidden_field :postcode %>
+
+          <%= f.hidden_field :address %>
+
+          <%= f.hidden_field :name %>
+
+
+      </div>
+
+
+
+
+      <div class="form-group row ">
+        <%= f.submit "購入を確定する。", class: "btn btn-success" %>
+      </div>
+    <% end %>
+</div>
+
+
