@@ -39,10 +39,10 @@
             <td><%= customer.telephone_number %></td>
             <td><%= customer.email %></td>
             <td>
-                <% if customer.is_deleted == true %>
-                  <p>有効</p>
+                <% if customer.is_deleted == false %>
+                  <p>在籍</p>
                 <% else %>
-                  <p>無効</p>
+                  <p>退会済み</p>
                 <% end %>
             </td>
             <td class="text-center"><p><%= link_to '会員詳細', admin_customer_path(customer.id), class: "btn btn-outline-dark" %></p></td>
