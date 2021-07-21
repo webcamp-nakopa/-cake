@@ -17,10 +17,10 @@
           <% if @order.payment_methods == 1 %>
             <th>支払い方法</th>
             <td>クレジットカード</td>
-          <%elsif @order.payment_methods == 0 %>
+          <% elsif @order.payment_methods == 0 %>
             <th>支払い方法</th>
             <td>銀行振り込み</td>
-          <%end %>
+          <% end %>
         </tr>
         <tr>
           <th>ステータス</th>
