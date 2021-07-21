@@ -25,8 +25,9 @@
             <td><%= customer.address %></td>
             <td><%= customer.telephone_number %></td>
             <td><%= customer.email %></td>
-            <td>
-                <% if customer.is_deleted == true %>
+            <td> </p>
+                <% if customer.is_deleted == 1 %>
+
                   <p>有効</p>
                 <% else %>
                   <p>無効</p>
