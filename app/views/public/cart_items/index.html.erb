@@ -5,7 +5,7 @@
     <%= link_to"カートを空にする", cart_items_destroy_all_path, class: "btn btn-danger m-0", method: :delete, data: {confirm: "カートを空にしてもいいですか？"} %>
   </div>
 
-  <% if @cart_items.present? %>
+<% if @cart_items.present? %>
   <table class="table">
     <thead class="thead-light">
       <tr>
@@ -41,14 +41,14 @@
           <%= link_to"削除する", cart_item_path(cart_item), class: "btn btn-danger", method: :delete, data: {confirm: "本当に消しますか？"} %>
         </td>
       </tr>
-      <% @sum += @subtotal %>
-      <% end %>
+    <% @sum += @subtotal %>
+  <% end %>
     </tbody>
   </table>
 
-  <% else %>
-    <p class="m-3">カートに商品は入っていません</p>
-  <% end %>
+<% else %>
+  <p class="m-3">カートに商品は入っていません</p>
+<% end %>
 
   <div class="text-center m-5">
     <p class="font-weight-bold h3 text-right">合計金額: <%= @sum %>円</p>
