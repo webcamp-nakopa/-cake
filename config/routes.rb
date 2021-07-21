@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-
+    get 'orders/thank_you' => 'orders#thank_you'
     resources :orders ,only: [:new ,:index ,:show ,:create] do
       collection do
         post :confirm
@@ -45,7 +45,9 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+    get '/customer/order/:id' => 'orders#customerindex',as: 'customer_orders'
     resources :orders ,only: [:show,:index]
+
     resources :customers ,only: [:index, :show, :edit, :update]
     resources :genres ,only: [:index, :create, :edit, :update, :destroy]
     get "/genres/:id", to: "genres#edit"

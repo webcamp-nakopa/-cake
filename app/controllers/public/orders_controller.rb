@@ -54,7 +54,7 @@ class Public::OrdersController < ApplicationController
     @order.shipping = 800
     @customer = current_customer
     @order.status = 0
-    @order.total_payment = 100
+
 
     if @order.save
       @cart_items.each{|cart_item|
@@ -67,8 +67,9 @@ class Public::OrdersController < ApplicationController
         @order_detail.save
 
       }
-
-      redirect_to '/orders'
+      @cart_items = current_customer.cart_items
+      @cart_items.destroy_all
+      redirect_to orders_thank_you_path
 
     else
       render :confirm
@@ -77,11 +78,15 @@ class Public::OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.order(id: :DESC)
+    @orders = current_customer.orders.order(id: :DESC)
     @order_details = OrderDetail.all
   end
 
   def show
+    @order = Order.find(params[:id])
+  end
+  def thank_you
+
   end
 
 

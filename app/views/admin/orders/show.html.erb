@@ -1,2 +1,69 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h1>Public::Orders#index</h1>
+<p>Find me in app/views/public/orders/index.html.erb</p>
+<div class="container mt-5">
+  <h3>注文履歴詳細</h3>
+  <table>
+      <tr>
+          <th>購入者</th>
+          <td><%=@order.customer.last_name%> <%=@order.customer.first_name%></td>
+
+      </tr>
+      <tr>
+          <th>注文日</th>
+          <td><%=@order.created_at%></td>
+      </tr>
+      <tr>
+          <th>配送先</th>
+          <td>〒<%=@order.postcode%> <%=@order.address%></br><%@order.name%></td>
+      </tr>
+      <tr>
+        <% if @order.payment_methods == 1 %>
+            <th>支払い方法</th>
+            <td>クレジットカード</td>
+      　<%elsif @order.payment_methods == 0 %>
+            <th>支払い方法</th>
+            <td>銀行振り込み</td>
+        <%end %>
+      </tr>
+      <tr>
+          <th>注文ステータス</th>
+          <td><%=@order.status%></td>
+      </tr>
+  </table>
+  <div class="row">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>商品名</th>
+                  <th>単価(税込)</th>
+                  <th>数量</th>
+                  <th>小計</th>
+                  <th>制作ステータス</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <%@order.order_details.each do |f|%>
+                  <tr>
+                      <td><%=f.product.name%></td>
+                      <td><%=f.product.price%></td>
+                      <td><%=f.quantity%></td>
+                      <td><%=f.price%></td>
+                      <td>
+                        <%if f.production_status==0%>
+                            着手不可
+                        <%elsif f.production_status==1 %>
+                            制作待ち
+                        <%elsif f.production_status==2 %>
+                            製作中
+                        <%elsif f.production_status==3%>
+                            制作完了
+                        <%end%>
+                        </td>
+                      <td></td>
+                  </tr>
+              <%end%>
+          </tbody>
+      </table>
+  </div>
+</div>
