@@ -30,14 +30,14 @@
 
       <div class="form-group row">
 
-        <%= f.label :address_kind, "支払い方法", class: "col-sm-2" %>
+        <%= f.label :address_kind, "お届け先", class: "col-sm-2" %>
         <%= f.radio_button :address_kind, 1 %>
-        <%= f.label :address_kind, '自分宛', value: 1 %>
+        <%= f.label :address_kind, 'ご自身の住所', value: 1 %>
       </div><div class="form-group row"><div class = "col-sm-2"></div>
 
         <%= f.radio_button :address_kind, 2 %>
-        <%= f.label :address_kind, '登録済みの住所', value: 2 %>
-        <%= f.label :total_payment, "住所" %>
+        <%= f.label :address_kind, '登録済住所から選択', value: 2 %>
+
         <%= f.collection_select(:deliveryid, @customer.deliveries , :id, :address) %>
       </div><div class="form-group row"><div class = "col-sm-2"></div>
 
