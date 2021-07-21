@@ -39,7 +39,7 @@
             <td><%= customer.telephone_number %></td>
             <td><%= customer.email %></td>
             <td>
-                <% if customer.is_deleted == false %>
+                <% if customer.is_deleted == true %>
                   <p>在籍</p>
                 <% else %>
                   <p>退会済み</p>

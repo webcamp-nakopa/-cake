@@ -8,7 +8,7 @@
   <div>
     <%= link_to '退会しない', customer_path(@customer), class: "btn btn-outline-info" %>
     <%= form_with model: @customer, url: customers_destroy_path(@customer), local: true do |f| %>
-      <%= f.hidden_field :is_deleted, value: true %>
+      <%= f.hidden_field :is_deleted, value: false %>
       <%= f.submit '退会する', class: "btn btn-outline-danger" %>
     <% end %>
   </div>
