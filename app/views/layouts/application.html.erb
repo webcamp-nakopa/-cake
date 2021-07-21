@@ -11,11 +11,14 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <main class="container">
+    <main>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
     <%= yield %>
     </main>
+    <footer class="text-center">
+      ©︎なこぱ-DMMwebcamp
+    </footer>
   </body>
 </html>
