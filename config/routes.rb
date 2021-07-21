@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get 'homes/about'
     get 'customers/:id/confirm' => 'customers#confirm', as: 'customers_confirm'
     patch 'customers/destroy/:id' => 'customers#destroy' , as: 'customers_destroy'
+    get 'public/search' => 'searches#search', as: 'public_search'
   end
 
 
