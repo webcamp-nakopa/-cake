@@ -1,5 +1,8 @@
 <div class="container">
-  <h2 class="mt-5">商品一覧</h2>
+  <div class="d-flex justify-content-between mt-3">
+    <h2>商品一覧</h2>
+    <p><%= link_to "商品を追加する", new_admin_product_path,  class: "btn btn-success m-0" %></p>
+  </div>
 
     <table class="table">
       <thead class="thead-light">
@@ -20,7 +23,7 @@
           <td><%= product.price %></td>
           <td><%= product.genre.name %></td>
           <td>
-            <% if product.sales_status == true  %>
+            <% if product.sales_status == false  %>
               <p class="text-success">販売中</p>
             <% else %>
               <p class="text-secondary">販売停止中</p>
