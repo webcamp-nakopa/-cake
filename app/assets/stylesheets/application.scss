@@ -14,8 +14,6 @@
  *= require_self
  */
  @import "bootstrap";
- @import "slick-theme";
- @import "slick";
 
 
 // header
@@ -56,15 +54,23 @@ h2, h3, h4, h5, h6 {
 .table thead th {
  color: #a03c8b;
  border-top: 1px solid #a03c8b;
- border-bottom: 1px solid #a03c8b;
+ border-bottom: 3px double #a03c8b;
 }
-
-.table tbody td {
+.table tbody th {
  color: #a03c8b;
  border-top: 1px solid #a03c8b;
  border-bottom: 1px solid #a03c8b;
 }
 
+.table tbody td {
+ color: #414141;
+ border-bottom: 1px solid #a03c8b;
+}
+
+
+.table tbody{
+ border-bottom: 1px solid #a03c8b;
+}
 // customer product table設定
 
 .product thead th {
@@ -90,6 +96,8 @@ h2, h3, h4, h5, h6 {
 }
 
 
+
+
 // footer
 
 footer{
@@ -98,6 +106,7 @@ footer{
  line-height: 100px;
  position: relative;
 }
+
 
 // 背景画像
 
@@ -109,3 +118,76 @@ footer{
   position: absolute;
   bottom: 0;
  }
+
+$cWhite: #FbF8F3;
+$cPurple: #a03c8b;
+$cBlack: #414141;
+.sbtn {
+  position: relative;
+  display: inline-block;
+  background-color: $cWhite;
+  border: 1px solid $cPurple;
+  padding: 5px 20px;
+  margin: 10px auto;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: $cPurple;
+  text-decoration: none !important;
+  border-radius: 8px;
+
+  /* ここにボタンのスタイルを追加していこう */
+  &.btn-1:hover{
+      background-color: $cPurple;
+      color: $cWhite;
+
+  }
+  &.btn-2{
+    background-color: white;
+    &:hover{
+      background-color: $cPurple;
+      color: $cWhite;
+      box-shadow: none;
+    }
+  }
+  &.btn-3{
+    background-color: $cBlack;
+    border: 1px solid $cBlack;
+    color: white;
+    &:hover{
+    background-color: $cWhite;
+    border: 1px solid $cBlack;
+    color: $cBlack;
+    }
+  }
+  &.btn-4{
+    background-color: $cWhite;
+    border: 1px solid $cBlack;
+    color: $cBlack;
+    &:hover{
+      background-color: $cPurple;
+      border: 1px solid $cPurple;
+      color: $cWhite;
+      box-shadow: none;
+    }
+  }
+  &.btn-5{
+    background-color: $cWhite;
+    border: 1px solid $cBlack;
+    color: $cBlack;
+    &:hover{
+      background-color: $cBlack;
+      color: $cWhite;
+      box-shadow: none;
+    }
+  }
+   &.btn-6{
+    background-color: $cPurple;
+    border: 1px solid $cPurple;
+    color: $cWhite;
+    &:hover{
+      background-color: $cWhite;
+      color: $cPurple;
+      box-shadow: none;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="d-flex justify-content-between m-3">
-  <h2>shopping cart</h2>
+  <h2>ショッピングカート</h2>
     <%= link_to"カートを空にする", cart_items_destroy_all_path, class: "empty-btn font-weight-bold", method: :delete, data: {confirm: "カートを空にしてもいいですか？"} %>
   </div>
 
@@ -25,7 +25,7 @@
             </td>
             <td class="px-0">
               <%= attachment_image_tag cart_item.product, :image, :fill, 120, 100, format: 'jpeg', class: "mr-3 cart_item-image" %>
-              <%= cart_item.product.name %>
+              <span class="cart_item-name"><%= cart_item.product.name %></span>
             </td>
             <td>
               <%= cart_item.product.add_tax_price.to_s(:price)%>
