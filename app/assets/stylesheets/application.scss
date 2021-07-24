@@ -104,7 +104,20 @@ footer{
  height: 100px;
  width: 100% ;
  line-height: 100px;
+ position: relative;
 }
+
+
+// 背景画像
+
+ .back{
+  width: 90%;
+  height: 400%;
+  background-image: url("sub.png");
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+ }
 
 $cWhite: #FbF8F3;
 $cPurple: #a03c8b;
