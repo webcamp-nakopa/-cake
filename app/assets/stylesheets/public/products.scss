@@ -1,3 +1,31 @@
 // Place all the styles related to the public/Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// customer 商品写真折り返し
+.flex-wrap {
+ flex-wrap: wrap;
+ margin-right: 40px;
+}
+
+
+// cart-btn
+.cart-btn {
+  width: 140px;
+  height: 40px;
+  color: #fff;
+  background-color: #a03c8b;
+  border-radius: 6px;
+  border: 0px;
+}
+
+.dropdown button {
+}
+
+.product-dropdown {
+  color: #a03c8b;
+}
+
+.dropdown-menu a {
+  color: #a03c8b
+}

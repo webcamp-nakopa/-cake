@@ -15,32 +15,83 @@
  */
  @import "bootstrap";
 
- .field_with_errors {
+
+// header
+
+header {
+ margin-bottom: 50px;
+}
+
+header h1 a{
+ font-family:"Trajan Pro";
+ color: #a03c8b;
+}
+
+// 全体-----------
+
+body{
+ margin: 0;
+ padding: 0;
+ background-color:#FbF8F3;
+ color:#a03c8b;
+}
+
+body a {
+ color: #a03c8b;
+}
+
+body a:hover {
+ text-decoration: none;
+ color: #a03c8b;
+}
+
+h2, h3, h4, h5, h6 {
+ font-weight: bold;
+}
+
+// table-thead
+
+.table thead th {
+ color: #a03c8b;
+ border-top: 1px solid #a03c8b;
+ border-bottom: 1px solid #a03c8b;
+}
+
+.table tbody td {
+ color: #a03c8b;
+ border-top: 1px solid #a03c8b;
+ border-bottom: 1px solid #a03c8b;
+}
+
+// customer product table設定
+
+.product thead th {
+ border: 0px;
+}
+
+
+.product tbody td {
+ border: 0px;
+}
+
+// image角丸み
+
+.border-radius {
+ border-radius: 6px;
+}
+
+
+// errormessage表示の設定
+
+.field_with_errors {
   display: contents;
 }
 
-.cart_item_quantit_list {
- width: 200px;
-}
 
-.cart_item_quantit {
- width: 50px;
-}
-
-body{
- background-color:#FbF8F3;
- color:#9D1B58;
-}
+// footer
 
 footer{
  height: 100px;
  width: 100% ;
- position: absolute ;
- bottom: 0 ;
  line-height: 100px;
-}
-
-header h1{
- font-family:"Trajan Pro";
-
 }
