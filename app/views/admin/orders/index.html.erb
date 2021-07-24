@@ -1,5 +1,4 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+
 <div class="container mt-5">
   <%= link_to 'new', new_order_path %>
 	<div class="row">
@@ -8,7 +7,7 @@
       <h2>注文一覧<span class="small">(全<%= @orders.count %>件)</span></h2>
 			<div class="row">
 				<table class="table text-center">
-				  <thead>
+				  <thead class="m-2">
 				    <th>購入日時</th>
 				    <th>購入者</th>
 				    <th>注文個数</th>

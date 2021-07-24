@@ -47,8 +47,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/customer/order/:id' => 'orders#customerindex',as: 'customer_orders'
-    resources :orders ,only: [:show,:index]
-
+    resources :orders ,only: [:show,:index,:update]
+    resources :order_details ,only: [:update]
     resources :customers ,only: [:index, :show, :edit, :update]
     resources :genres ,only: [:index, :create, :edit, :update, :destroy]
     get "/genres/:id", to: "genres#edit"

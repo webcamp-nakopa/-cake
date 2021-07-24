@@ -58,6 +58,11 @@ h2, h3, h4, h5, h6 {
  border-top: 1px solid #a03c8b;
  border-bottom: 1px solid #a03c8b;
 }
+.table tbody th {
+ color: #a03c8b;
+ border-top: 1px solid #a03c8b;
+ border-bottom: 1px solid #a03c8b;
+}
 
 .table tbody td {
  color: #a03c8b;
@@ -65,6 +70,10 @@ h2, h3, h4, h5, h6 {
  border-bottom: 1px solid #a03c8b;
 }
 
+
+.table tbody{
+ border-bottom: 1px solid #a03c8b;
+}
 // customer product table設定
 
 .product thead th {
