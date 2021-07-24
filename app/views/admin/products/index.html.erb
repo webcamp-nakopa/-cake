@@ -1,11 +1,11 @@
 <div class="container">
   <div class="d-flex justify-content-between mt-3">
     <h2>商品一覧</h2>
-    <p><%= link_to "商品を追加する", new_admin_product_path,  class: "btn btn-success m-0" %></p>
+    <p class="add-btn font-weight-bold"><%= link_to "商品を追加する", new_admin_product_path %></p>
   </div>
 
     <table class="table">
-      <thead>
+      <thead class="thead">
         <tr>
           <th>商品ID</th>
           <th>商品名</th>
@@ -24,15 +24,13 @@
           <td><%= product.genre.name %></td>
           <td>
             <% if product.sales_status == false  %>
-              <p class="text-success">販売中</p>
+              <p class="text-success m-0">販売中</p>
             <% else %>
-              <p class="text-secondary">販売停止中</p>
+              <p class="text-secondary m-0">販売停止中</p>
             <% end %>
           </td>
           <td>
-            <div class="form-group row">
-              <%= link_to"削除する", admin_product_path(product), class: "text-danger", method: :delete, data: {confirm: "本当に消しますか？"} %>
-            </div>
+              <%= link_to"×", admin_product_path(product), class: "cart-delete-btn", method: :delete, data: {confirm: "本当に消しますか？"} %>
           </td>
         </tr>
         <% end %>
