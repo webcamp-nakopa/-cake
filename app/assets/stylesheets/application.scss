@@ -106,3 +106,75 @@ footer{
  width: 100% ;
  line-height: 100px;
 }
+$cWhite: #FbF8F3;
+$cPurple: #a03c8b;
+$cBlack: #414141;
+.sbtn {
+  position: relative;
+  display: inline-block;
+  background-color: $cWhite;
+  border: 1px solid $cPurple;
+  padding: 5px 20px;
+  margin: 10px auto;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: $cPurple;
+  text-decoration: none !important;
+  border-radius: 8px;
+
+  /* ここにボタンのスタイルを追加していこう */
+  &.btn-1:hover{
+      background-color: $cPurple;
+      color: $cWhite;
+
+  }
+  &.btn-2{
+    background-color: white;
+    &:hover{
+      background-color: $cPurple;
+      color: $cWhite;
+      box-shadow: none;
+    }
+  }
+  &.btn-3{
+    background-color: $cBlack;
+    border: 1px solid $cBlack;
+    color: white;
+    &:hover{
+    background-color: $cWhite;
+    border: 1px solid $cBlack;
+    color: $cBlack;
+    }
+  }
+  &.btn-4{
+    background-color: $cWhite;
+    border: 1px solid $cBlack;
+    color: $cBlack;
+    &:hover{
+      background-color: $cPurple;
+      border: 1px solid $cPurple;
+      color: $cWhite;
+      box-shadow: none;
+    }
+  }
+  &.btn-5{
+    background-color: $cWhite;
+    border: 1px solid $cBlack;
+    color: $cBlack;
+    &:hover{
+      background-color: $cBlack;
+      color: $cWhite;
+      box-shadow: none;
+    }
+  }
+   &.btn-6{
+    background-color: $cPurple;
+    border: 1px solid $cPurple;
+    color: $cWhite;
+    &:hover{
+      background-color: $cWhite;
+      color: $cPurple;
+      box-shadow: none;
+    }
+  }
+}
