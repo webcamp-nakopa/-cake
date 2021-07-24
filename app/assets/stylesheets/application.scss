@@ -14,8 +14,6 @@
  *= require_self
  */
  @import "bootstrap";
- @import "slick-theme";
- @import "slick";
 
 
 // header
@@ -56,12 +54,11 @@ h2, h3, h4, h5, h6 {
 .table thead th {
  color: #a03c8b;
  border-top: 1px solid #a03c8b;
- border-bottom: 1px solid #a03c8b;
+ border-bottom: 3px double #a03c8b;
 }
 
 .table tbody td {
- color: #a03c8b;
- border-top: 1px solid #a03c8b;
+ color: #414141;
  border-bottom: 1px solid #a03c8b;
 }
 
@@ -90,6 +87,8 @@ h2, h3, h4, h5, h6 {
 }
 
 
+
+
 // footer
 
 footer{
@@ -97,4 +96,3 @@ footer{
  width: 100% ;
  line-height: 100px;
 }
-

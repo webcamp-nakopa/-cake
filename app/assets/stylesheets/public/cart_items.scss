@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.cart_item-name {
+ font-size: 14px;
+}
+
 // cart_item-image
 
 .cart_item-image {
@@ -52,9 +57,9 @@
 
 .empty-btn {
  width: 150px;
- height: 46px;
+ height: 40px;
  text-align: center;
- line-height: 46px;
+ line-height: 40px;
  color: #a03c8b;
  border: 1px solid #a03c8b;
  border-radius: 6px;
