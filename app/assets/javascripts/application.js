@@ -18,14 +18,14 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-
-$(function() {
-    $('.top').slick({
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 5000,
-        centerMode: true,
-        centerPadding: '100px'
+$(document).on('turbolinks:load', function() {
+    $(function() {
+        $('#top').slick({
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            centerMode: true,
+            centerPadding: '100px'
+        });
     });
 });
