@@ -1,15 +1,22 @@
-<div class="top">
-    <div class="image"><%= image_tag "strawberrycake.png", class: "image2", alt: "strawberrycake" %></div>
-    <div class="image"><%= image_tag "flowercake.png", class: "image2", alt: "flower_cake" %></div>
-    <div class="imege"><%= image_tag "fruitcake.png", class: "image2", alt: "fruit_cake" %></div>
+<div id="top">
+    <div><%= image_tag "strawberrycake.png", class: "image2", alt: "strawberrycake" %></div>
+    <div><%= image_tag "flowercake.png", class: "image2", alt: "flower_cake" %></div>
+    <div><%= image_tag "fruitcake.png", class: "image2", alt: "fruit_cake" %></div>
 </div>
-<ul class="top-banner">
-<li><%= image_tag "cake1.png", class: "image3", alt: "cake1" %></li>
-<li><%= image_tag "cake2.png", class: "image3", alt: "cake2" %></li>
-<li><%= image_tag "cake3.png", class: "image3", alt: "cake3" %></li>
+
+<div class="container">
+<ul class="top-banner p-0">
+<% @products.each do |product| %>
+<li>
+　<%= link_to product_path(product.id) do %>
+　　<%= attachment_image_tag product, :image, class: "image3" %>
+  <p class="m-0"><%= product.name %></p>
+  <p>¥<%= product.price %></p>
+　<% end %>
+</li>
+<% end %>
 </ul>
-
-
+</div>
 
 <p>ようこそ、ながのCAKEへ！</br>
 このサイトは、ケーキ販売のECサイトになります。</br>
