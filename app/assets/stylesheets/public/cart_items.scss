@@ -1,3 +1,105 @@
 // Place all the styles related to the public/CartItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// cart_item-image
+
+.cart_item-image {
+ border-radius: 6px;
+}
+
+// customer cart-item number_field size調整
+
+.cart_item_quantit_list {
+ width: 200px;
+}
+
+.cart_item_quantit {
+ width: 55px;
+ height: 35px;
+ border-radius: 6px;
+ border: 0px;
+}
+
+.cart_item_tbody {
+ height: 150px;
+ line-height: 100px;
+}
+
+
+// cart-delete-btnの設定
+
+.cart-delete-btn {
+ background: #a03c8b;
+ font-size: 1rem;
+ line-height: 26px;
+ width: 26px;
+ height: 26px;
+ border-radius: 50%;
+ display: inline-block;
+ color: #fff;
+ text-align: center;
+}
+
+// 合計金額
+
+.under-bar {
+ border-bottom: 2px solid #a03c8b;
+ margin-top: 30px;
+}
+
+// cart_itemボタン関係
+
+.empty-btn {
+ width: 150px;
+ height: 46px;
+ text-align: center;
+ line-height: 46px;
+ color: #a03c8b;
+ border: 1px solid #a03c8b;
+ border-radius: 6px;
+}
+
+.change-btn {
+ width: 50px;
+ height: 30px;
+ background-color: #a03c8b;
+ border: 1px solid #a03c8b;
+ line-height: 1rem;
+ color: #fff;
+ border-radius: 6px;
+}
+
+.cart_item_btn {
+ margin-top: 150px;
+}
+
+.shopping-btn {
+ background-color: #a03c8b;
+ width: 40%;
+ height: 50px;
+ line-height: 50px;
+ margin: 0 auto;
+ border-radius: 6px;
+}
+
+.shopping-btn a {
+ color: #fff;
+}
+
+.shopping-btn a:hover {
+ text-decoration: none;
+ color: #fff;
+}
+
+.pay-btn {
+ margin: 0 auto;
+ width: 40%;
+ height: 50px;
+ line-height: 50px;
+ border-radius: 6px;
+}
+
+.pay-btn a {
+ color: #a03c8b;
+}
