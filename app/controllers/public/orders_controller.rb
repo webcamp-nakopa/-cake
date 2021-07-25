@@ -9,7 +9,8 @@ class Public::OrdersController < ApplicationController
     @order= Order.new(order_params)
     @order_detail = OrderDetail.new
     @customer = current_customer
-    @cart_items = CartItem.where(customer_id: @customer.id).all
+
+    @cart_items = CartItem.joins(:product).where(products: {sales_status: false}).where(customer_id: @customer.id)
 
 
     @order.customer_id=@customer.id
@@ -39,6 +40,7 @@ class Public::OrdersController < ApplicationController
 
     @order.status = 0
     render :new if @order.address_kind==nil
+    render :new if @order.payment_methods==nil
 
 
   end
@@ -48,7 +50,7 @@ class Public::OrdersController < ApplicationController
 
     @customer = current_customer
 
-    @cart_items = CartItem.where(customer_id: @customer.id)
+    @cart_items = CartItem.joins(:product).where(products: {sales_status: false}).where(customer_id: @customer.id)
 
     @order.customer_id=@customer.id
     @order.shipping = 800
@@ -65,12 +67,18 @@ class Public::OrdersController < ApplicationController
         @order_detail.price = cart_item.product.add_tax_price.to_s(:price)
         @order_detail.production_status = 0
         @order_detail.save
-
       }
       @cart_items = current_customer.cart_items
       @cart_items.destroy_all
       redirect_to orders_thank_you_path
-
+      if @order.address_kind == 3
+        @newdelivery = Delivery.new
+        @newdelivery.customer_id = @customer.id
+        @newdelivery.postcode = @order.postcode
+        @newdelivery.address = @order.address
+        @newdelivery.name = @order.name
+        @newdelivery.save
+      end
     else
       render :confirm
     end
@@ -78,6 +86,7 @@ class Public::OrdersController < ApplicationController
 
 
   def index
+
     @orders = current_customer.orders.order(id: :DESC)
     @order_details = OrderDetail.all
   end

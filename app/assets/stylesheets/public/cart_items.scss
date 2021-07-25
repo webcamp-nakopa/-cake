@@ -30,7 +30,11 @@
  height: 150px;
  line-height: 100px;
 }
-
+#line-height-false{
+ line-height: normal;
+ font-size: 13px;
+ margin-bottom: 0px;
+}
 
 // cart-delete-btnの設定
 
