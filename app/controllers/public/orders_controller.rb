@@ -39,8 +39,8 @@ class Public::OrdersController < ApplicationController
 
 
     @order.status = 0
-    render :new if @order.address_kind==nil
-    render :new if @order.payment_methods==nil
+    render :new if @order.address_kind==nil or @order.payment_methods==nil
+
 
 
   end
@@ -77,10 +77,12 @@ class Public::OrdersController < ApplicationController
         @newdelivery.postcode = @order.postcode
         @newdelivery.address = @order.address
         @newdelivery.name = @order.name
-        @newdelivery.save
+        if @newdelivery.save
+          render :new
+        end
       end
     else
-      render :confirm
+      render :new
     end
   end
 
