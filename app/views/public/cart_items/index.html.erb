@@ -1,7 +1,7 @@
 <div class="container">
   <div class="d-flex justify-content-between m-3">
   <h2>ショッピングカート</h2>
-    <%= link_to"カートを空にする", cart_items_destroy_all_path, class: "empty-btn font-weight-bold", method: :delete, data: {confirm: "カートを空にしてもいいですか？"} %>
+    <%= link_to"カートを空にする", cart_items_destroy_all_path, class: "sbtn btn-2 m-0 pt-2 font-weight-bold text-center", method: :delete, data: {confirm: "カートを空にしてもいいですか？"} %>
   </div>
 
 <% if @cart_items.present? %>
@@ -20,26 +20,9 @@
         <% @cart_items.each do |cart_item| %>
           <% if cart_item.product.sales_status == false  %>
           <tr>
-            <td>
-              <%= link_to"×", cart_item_path(cart_item), class: "cart-delete-btn", method: :delete, data: {confirm: "本当に消しますか？"} %>
-            </td>
-            <td class="px-0">
-              <%= attachment_image_tag cart_item.product, :image, :fill, 120, 100, format: 'jpeg', class: "mr-3 cart_item-image" %>
-              <span class="cart_item-name"><%= cart_item.product.name %></span>
-            </td>
-            <td>
-              <%= cart_item.product.add_tax_price.to_s(:price)%>
-            </td>
-            <td class="cart_item_quantit_list">
-              <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true do |f| %>
-                <%= f.number_field :quantity, min: 1, include_blank: cart_item.quantity.to_s, class: "cart_item_quantit" %>
-                <%= f.submit"変更", class: "change-btn" %>
-              <% end %>
-            </td>
-            <td>
-              <% @subtotal = cart_item.quantity.to_i * cart_item.product.add_tax_price %>
-              <%= @subtotal %>
-            </td>
+            <tr id="cart-<%= cart_item.id %>">
+              <%= render "quantity", cart_item: cart_item %>
+            </tr>
           </tr>
         <% @sum += @subtotal %>
       <% end %>
@@ -50,7 +33,7 @@
 <% else %>
   <p class="m-3">カートに商品は入っていません</p>
 <% end %>
-  <div class="d-flex float-right under-bar">
+  <div class="d-flex float-right under-bar" id="sum">
     <label class="mr-5">合計金額:</label>
     <p class="font-weight-bold"><%= @sum %>円</p>
   </div>

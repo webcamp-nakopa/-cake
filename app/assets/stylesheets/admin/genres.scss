@@ -1,3 +1,11 @@
 // Place all the styles related to the admin/Genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sbtn.btn-6.m-0, .sbtn.btn-2.m-0.genre-delete {
+  width: 110px;
+}
+
+.genre-name {
+  vertical-align: inherit!important;
+}
