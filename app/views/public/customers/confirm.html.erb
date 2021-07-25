@@ -6,10 +6,10 @@
       退会する場合は、「退会する」をクリックしてください。</p>
     </div>
     <div class="d-flex">
-      <p><%= link_to '退会しない', customer_path(@customer), class: "btn btn-outline-info confirm" %></p>
+      <p class="text-center"><%= link_to '退会しない', customer_path(@customer), class: "sbtn btn-6 confirm" %></p>
       <p><%= form_with model: @customer, url: customers_destroy_path(@customer), local: true do |f| %>
         <%= f.hidden_field :is_deleted, value: false %>
-        <%= f.submit '退会する', class: "btn btn-outline-danger confirm ml-3" %>
+        <%= f.submit '退会する', class: "sbtn btn-5 confirm ml-3" %>
       <% end %>
       </p>
     </div>

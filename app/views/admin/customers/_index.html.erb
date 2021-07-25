@@ -1,41 +1,40 @@
-<div>
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th>姓</th>
-          <th>名</th>
-          <th>セイ</th>
-          <th>メイ</th>
-          <th>郵便番号</th>
-          <th>住所</th>
-          <th>電話番号</th>
-          <th>メールアドレス</th>
-          <th>会員ステータス</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% customers.each do |customer| %>
-          <tr>
-            <td><%= customer.last_name %></td>
-            <td><%= customer.first_name %></td>
-            <td><%= customer.last_name_kana %></td>
-            <td><%= customer.first_name_kana %></td>
-            <td><%= customer.postal_code %></td>
-            <td><%= customer.address %></td>
-            <td><%= customer.telephone_number %></td>
-            <td><%= customer.email %></td>
-            <td> </p>
-                <% if customer.is_deleted == 1 %>
-
-                  <p>有効</p>
-                <% else %>
-                  <p>無効</p>
-                <% end %>
-            </td>
-            <td class="text-center"><p><%= link_to '会員詳細', admin_customer_path(customer.id), class: "btn btn-outline-dark" %></p></td>
-          </tr>
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th>姓</th>
+      <th>名</th>
+      <th>セイ</th>
+      <th>メイ</th>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>電話番号</th>
+      <th>メールアドレス</th>
+      <th>会員ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% customers.each do |customer| %>
+    <tr>
+      <td><%= customer.last_name %></td>
+      <td><%= customer.first_name %></td>
+      <td><%= customer.last_name_kana %></td>
+      <td><%= customer.first_name_kana %></td>
+      <td><%= customer.postal_code %></td>
+      <td><%= customer.address %></td>
+      <td><%= customer.telephone_number %></td>
+      <td><%= customer.email %></td>
+      <td>
+        <% if customer.is_deleted == 1 %>
+          <p>有効</p>
+        <% else %>
+          <p>無効</p>
         <% end %>
-      </tbody>
-    </table>
-  </div>
+      </td>
+      <td class="text-center">
+        <p><%= link_to '会員詳細', admin_customer_path(customer.id), class: "sbtn btn-6" %></p>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
