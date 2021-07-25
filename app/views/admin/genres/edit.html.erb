@@ -1,5 +1,5 @@
 <div class="container">
-<h2 class="mt-5">ジャンル一覧・追加</h2>
+<h2>ジャンル一覧・追加</h2>
 
   <% if @genre.errors.any? %>
     <div id="error_explanation">
@@ -13,8 +13,8 @@
 
     <%= form_with model: @genre, url: admin_genre_path(@genre), class: "form-inline", local: true do |f| %>
       <%= f.label :name, "ジャンル名" %>
-      <%= f.text_field :name %>
-      <%= f.submit "変更を保存", class: "btn btn-success" %>
+      <%= f.text_field :name, class: "mx-2" %>
+      <%= f.submit "変更を保存", class: "sbtn btn-4 m-0" %>
     <% end %>
   </div>
 </div>

@@ -1,9 +1,2 @@
-$('#sub_price-<%= @cart_item.id %>').html("¥<%= @price %>");
-$('#total_price').html("¥<%= @total %>");
-$('#flash').html("<%= j(render 'layouts/flash') %>");
-$('#flash').show();
-setTimeout("$('#flash').fadeOut('slow')", 2000);
-
-<!--<div>-->
-<!--      <%#= render partial: 'quantity', locals: { cart_item: @cart_items } %>-->
-<!--</div>-->
+$('#subtotal-<%= @cart_item.id %>').html("¥<%= @subtotal %>");
+$('#sum').html("¥<%= @sum %>");

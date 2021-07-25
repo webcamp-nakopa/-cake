@@ -46,6 +46,12 @@
  text-align: center;
 }
 
+.cart-delete-btn:hover {
+ background: #fff;
+ color: #a03c8b;
+ border: 1px solid #a03c8b;
+}
+
 // 合計金額
 
 .under-bar {
@@ -54,6 +60,10 @@
 }
 
 // cart_itemボタン関係
+.btn-2 {
+ width: 180px;
+}
+
 
 .empty-btn {
  width: 150px;
@@ -71,8 +81,13 @@
  background-color: #a03c8b;
  border: 1px solid #a03c8b;
  line-height: 1rem;
- color: #fff;
  border-radius: 6px;
+ color: #fff;
+ &:hover{
+ background-color: #fff;
+ box-shadow: none;
+ color: #a03c8b;
+}
 }
 
 .cart_item_btn {
@@ -93,8 +108,16 @@
 }
 
 .shopping-btn a:hover {
- text-decoration: none;
  color: #fff;
+}
+
+.next-btn {
+ width: 40%;
+ height: 50px;
+ border-radius: 6px;
+ line-height: 50px;
+ margin: 0 auto;
+ background-color: #fff;
 }
 
 .pay-btn {
