@@ -9,7 +9,7 @@
 <% @products.each do |product| %>
 <li>
 　<%= link_to product_path(product.id) do %>
-　　<%= attachment_image_tag product, :image, class: "image3" %>
+　　<%= attachment_image_tag product, :image, :fill, 320, 260,  class: "image3" %>
   <p class="m-0"><%= product.name %></p>
   <p>¥<%= product.price %></p>
 　<% end %>
