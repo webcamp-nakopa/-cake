@@ -23,9 +23,22 @@
 }
 
 header h1 a{
- font-family:"Trajan Pro";
+ font-family:"Times New Roman";
+ font-size: 100px;
  color: #a03c8b;
 }
+
+.nav-item {
+ width: 130px;
+ background-color: #a03c8b;
+ border-radius: 3px;
+ color: #fff;
+}
+
+a.nav-link {
+ color: #fff!important;
+}
+
 
 // 全体-----------
 
