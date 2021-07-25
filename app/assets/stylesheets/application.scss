@@ -137,26 +137,18 @@ $cBlack: #414141;
 
   /* ここにボタンのスタイルを追加していこう */
  &.btn-1{
-    background-color: $cPurple;
-    padding: 10px 17%;
-    border: none;
-    color: white;
-    margin: 0;
-    border-radius: 0;
     &:hover{
-      font-size: 18px;
-      padding: 9px 16%;
+      background-color: $cBlack;
+      color: $cWhite;
+      font-size: 10px;
     }
   }
   &.btn-2{
     background-color: white;
-    padding: 10px 17%;
-    border: none;
-    margin: 0;
-    border-radius: 0;
     &:hover{
-      font-size: 18px;
-      padding: 9px 16%;
+      background-color: $cPurple;
+      color: $cWhite;
+      box-shadow: none;
     }
   }
   &.btn-3{
@@ -200,4 +192,34 @@ $cBlack: #414141;
       box-shadow: none;
     }
   }
+   &.btn-7{
+    background-color: $cPurple;
+    padding: 0px 10%;
+    border: none;
+    color: white;
+    margin: 0;
+    border-radius: 0;
+    width: 50%;
+    height: 47px;
+    line-height: 50px;
+    &:hover{
+      font-size: 18px;
+
+    }
+  }
+  &.btn-8{
+    background-color: white;
+    padding: 0px 10%;
+    border: none;
+    margin: 0;
+    border-radius: 0;
+    width: 50%;
+    height: 47px;
+    line-height: 50px;
+    &:hover{
+      font-size: 18px;
+
+    }
+  }
+
 }
