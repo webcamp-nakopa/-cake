@@ -1,7 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
   def update
     @order_detail = OrderDetail.find(params[:id])
-    @order = @order_detail.order
+    @order = @order_detail.order.id
     if @order_detail.update(order_detail_params)
       flash[:notice] = "製造ステータスを変更しました。"
       redirect_to admin_order_path(@order)
