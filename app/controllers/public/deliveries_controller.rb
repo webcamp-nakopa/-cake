@@ -9,6 +9,7 @@ class Public::DeliveriesController < ApplicationController
     @delivery.customer_id = current_customer.id
     if @delivery.save
       redirect_to deliveries_path
+      flash[:notice] = "配送先を追加しました"
     else
       @deliveries = current_customer.deliveries
       render 'index'
@@ -24,6 +25,7 @@ class Public::DeliveriesController < ApplicationController
     @delivery = Delivery.find(params[:id])
     if @delivery.update(delivery_params)
      redirect_to deliveries_path
+     flash[:notice] = "配送先を変更しました"
     else
       render 'edit'
     end
@@ -33,6 +35,7 @@ class Public::DeliveriesController < ApplicationController
     @delivery = Delivery.find(params[:id])
     @delivery.destroy
     redirect_to deliveries_path
+    flash[:notice] = "配送先を削除しました"
   end
 
   private

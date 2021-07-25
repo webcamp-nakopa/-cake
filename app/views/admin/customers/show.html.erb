@@ -1,38 +1,43 @@
   <div class="container">
-    <h2>会員詳細(admin側)</h2>
+    <h2>会員詳細ページ</h2>
     <div class="col-md-6 col-sm-6 col-xs-6">
       <div class="form-group row">
+        <label for="name" class="col-md-4 col-sm-4 col-xs-12">姓・名</label>
         <%= @customer.last_name %>
         <%= @customer.first_name %>
       </div>
       <div class="form-group row">
+        <label for="name_kana" class="col-md-4 col-sm-4 col-xs-12">セイ・メイ</label>
         <%= @customer.last_name_kana %>
         <%= @customer.first_name_kana %>
       </div>
       <div class="form-group row">
+        <label for="postal_code" class="col-md-4 col-sm-4 col-xs-12">郵便番号</label>
         <%= @customer.postal_code %>
       </div>
       <div class="form-group row">
+        <label for="address" class="col-md-4 col-sm-4 col-xs-12">住所</label>
         <%= @customer.address %>
       </div>
       <div class="form-group row">
+        <label for="telephone_number" class="col-md-4 col-sm-4 col-xs-12">電話番号</label>
         <%= @customer.telephone_number %>
       </div>
       <div class="form-group row">
+        <label for="email" class="col-md-4 col-sm-4 col-xs-12">メールアドレス</label>
         <%= @customer.email %>
       </div>
       <div class="form-group row">
+        <label for="is_deleted" class="col-md-4 col-sm-4 col-xs-12">会員ステータス</label>
         <% if @customer.is_deleted == true %>
           <p>有効</p>
         <% else %>
           <p>無効</p>
         <% end %>
       </div>
-      <div class="form-group row">
-        <%= link_to '会員情報編集', edit_admin_customer_path(@customer.id), class: "btn btn-outline-dark" %>
-      </div>
-      <div class="form-group row">
-        <%= link_to '注文履歴一覧', admin_customer_orders_path(@customer.id), class: "btn btn-outline-dark" %>
+      <div>
+        <p><%= link_to '会員情報編集', edit_admin_customer_path(@customer.id), class: "sbtn btn-6 text-center admin-mypage" %></p>
+        <p><%= link_to '注文履歴一覧', admin_customer_orders_path(@customer.id), class: "sbtn btn-6 text-center admin-mypage" %></p>
       </div>
     </div>
   </div>
