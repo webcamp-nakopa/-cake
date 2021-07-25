@@ -20,7 +20,7 @@
       <%= f.text_field :address, class: "col-md-2 col-sm-2 col-xs-12" %>
       <%= f.label :name, "宛名", class: "col-md-1 col-sm-1 col-xs-12" %>
       <%= f.text_field :name, class: "col-md-2 col-sm-2 col-xs-12" %>
-      <%= f.submit "新規登録", class: "btn btn-outline-dark ml-5" %>
+      <%= f.submit "新規登録", class: "sbtn btn-6 ml-5" %>
     <% end %>
 
     <div class="row">
@@ -40,8 +40,8 @@
             <td><%= delivery.postcode %></td>
             <td><%= delivery.address %></td>
             <td><%= delivery.name %></td>
-            <td class="text-center"><%= link_to"編集する", edit_delivery_path(delivery), class: "btn btn-outline-info" %></td>
-            <td class="text-center"><%= link_to"削除する", delivery_path(delivery), class: "btn btn-outline-warning", method: :delete, data: {confirm: "本当に消しますか？"} %></td>
+            <td class="text-center"><%= link_to"編集する", edit_delivery_path(delivery), class: "sbtn btn-6" %></td>
+            <td class="text-center"><%= link_to"削除する", delivery_path(delivery), class: "sbtn btn-3", method: :delete, data: {confirm: "本当に消しますか？"} %></td>
           </tr>
           <% end %>
         </tbody>
