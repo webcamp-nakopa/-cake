@@ -104,7 +104,20 @@ footer{
  height: 100px;
  width: 100% ;
  line-height: 100px;
+ position: relative;
 }
+
+
+// 背景画像
+
+ .back{
+  width: 90%;
+  height: 400%;
+  background-image: url("sub.png");
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+ }
 
 $cWhite: #FbF8F3;
 $cPurple: #a03c8b;
@@ -123,17 +136,27 @@ $cBlack: #414141;
   border-radius: 8px;
 
   /* ここにボタンのスタイルを追加していこう */
-  &.btn-1:hover{
-      background-color: $cPurple;
-      color: $cWhite;
-
+ &.btn-1{
+    background-color: $cPurple;
+    padding: 10px 17%;
+    border: none;
+    color: white;
+    margin: 0;
+    border-radius: 0;
+    &:hover{
+      font-size: 18px;
+      padding: 9px 16%;
+    }
   }
   &.btn-2{
     background-color: white;
+    padding: 10px 17%;
+    border: none;
+    margin: 0;
+    border-radius: 0;
     &:hover{
-      background-color: $cPurple;
-      color: $cWhite;
-      box-shadow: none;
+      font-size: 18px;
+      padding: 9px 16%;
     }
   }
   &.btn-3{
