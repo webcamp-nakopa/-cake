@@ -136,17 +136,27 @@ $cBlack: #414141;
   border-radius: 8px;
 
   /* ここにボタンのスタイルを追加していこう */
-  &.btn-1:hover{
-      background-color: $cPurple;
-      color: $cWhite;
-
+ &.btn-1{
+    background-color: $cPurple;
+    padding: 10px 17%;
+    border: none;
+    color: white;
+    margin: 0;
+    border-radius: 0;
+    &:hover{
+      font-size: 18px;
+      padding: 9px 16%;
+    }
   }
   &.btn-2{
     background-color: white;
+    padding: 10px 17%;
+    border: none;
+    margin: 0;
+    border-radius: 0;
     &:hover{
-      background-color: $cPurple;
-      color: $cWhite;
-      box-shadow: none;
+      font-size: 18px;
+      padding: 9px 16%;
     }
   }
   &.btn-3{
