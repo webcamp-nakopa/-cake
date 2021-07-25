@@ -17,13 +17,13 @@
     </thead>
     <tbody class="cart_item_tbody">
       <% @sum = 0 %>
-        <% @cart_items.each do |cart_item| %>
-          <% if cart_item.product.sales_status == false  %>
+      <% @cart_items.each do |cart_item| %>
           <tr>
             <tr id="cart-<%= cart_item.id %>">
               <%= render "quantity", cart_item: cart_item %>
             </tr>
           </tr>
+      <% if cart_item.product.sales_status == false  %>
         <% @sum += @subtotal %>
       <% end %>
     <% end %>

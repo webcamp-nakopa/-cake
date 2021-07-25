@@ -6,15 +6,33 @@
   <span class="cart_item-name"><%= cart_item.product.name %></span>
 </td>
 <td>
-  <%= cart_item.product.add_tax_price.to_s(:price)%>
+  <% if cart_item.product.sales_status == false  %>
+    <%= cart_item.product.add_tax_price.to_s(:price)%>
+
+  <%else%>
+    販売停止
+
+  <% end %>
+
 </td>
 <td class="cart_item_quantit_list">
-  <%= form_with model: cart_item, url: cart_item_path(cart_item), remote: true do |f| %>
-    <%= f.number_field :quantity, min: 1, include_blank: cart_item.quantity.to_s, class: "cart_item_quantit" %>
-    <%= f.submit"変更", class: "change-btn" %>
+  <% if cart_item.product.sales_status == false  %>
+    <%= form_with model: cart_item, url: cart_item_path(cart_item), remote: true do |f| %>
+      <%= f.number_field :quantity, min: 1, include_blank: cart_item.quantity.to_s, class: "cart_item_quantit" %>
+      <%= f.submit"変更", class: "change-btn" %>
+    <% end %>
+  <%else%>
+    <p id="line-height-false">　大変好評につき、売り切れとなりました。</br>　この商品はお会計に含まれません。</br>　ご了承ください。</p>
   <% end %>
+
 </td>
 <td id='subtotal-<%= cart_item.id %>'>
-  <% @subtotal = cart_item.quantity.to_i * cart_item.product.add_tax_price %>
-  <%= @subtotal %>
+  <% if cart_item.product.sales_status == false  %>
+    <% @subtotal = cart_item.quantity.to_i * cart_item.product.add_tax_price %>
+    <%= @subtotal %>
+
+  <%else%>
+   <% @subtotal= 0%>
+
+  <%end%>
 </td>
