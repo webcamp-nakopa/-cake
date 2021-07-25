@@ -1,5 +1,6 @@
-<div class="container">
-<h2 class="mt-5">配送先編集</h2>
+<div class="container mt-5 my-2">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+  <h2>配送先編集</h2>
 
   <% if @delivery.errors.any? %>
     <div id="error_explanation">
@@ -12,13 +13,14 @@
   <% end %>
 
     <%= form_with model: @delivery, url: delivery_path, class: "form-inline", local: true, method: :patch do |f| %>
-      <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-      <%= f.text_field :postcode %>
-      <%= f.label :address, "住所" %>
-      <%= f.text_field :address %>
-      <%= f.label :name, "宛名" %>
-      <%= f.text_field :name %>
-      <%= f.submit "変更を保存", class: "btn btn-outline-dark" %>
+      <%= f.label :postcode, "郵便番号", class: "col-md-2 col-sm-2 col-xs-12" %>
+      <%= f.text_field :postcode, class: "col-md-2 col-sm-2 col-xs-12" %>
+      <%= f.label :address, "住所", class: "col-md-1 col-sm-1 col-xs-12" %>
+      <%= f.text_field :address, class: "col-md-2 col-sm-2 col-xs-12" %>
+      <%= f.label :name, "宛名", class: "col-md-1 col-sm-1 col-xs-12" %>
+      <%= f.text_field :name, class: "col-md-2 col-sm-2 col-xs-12" %>
+      <%= f.submit "変更を保存", class: "btn btn-outline-dark ml-5" %>
     <% end %>
+  </div>
   </div>
 </div>
