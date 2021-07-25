@@ -4,11 +4,11 @@
 		  <div class="d-flex justify-content-between">
         <h2 class="mb-3">商品<span class="small">(全<%= @products.count %>件)</span></h2>
           <div class="dropdown mr-5">
-          <button class="btn dropdown-toggle product-dropdown font-weight-bold"
-          type="button" id="dropdownMenu1" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <span class='product-dropdown'>ジャンル検索</span>
-          </button>
+            <button class="btn dropdown-toggle product-dropdown font-weight-bold"
+            type="button" id="dropdownMenu1" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span class='product-dropdown'>ジャンル検索</span>
+            </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <%= link_to '全ての商品', products_path, class: "dropdown-item" %>
               <% @genres.each do |genre| %>
