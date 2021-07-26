@@ -102,7 +102,7 @@
 　Ruby on Rails</br>
 
 <h2>インストール</h2>
-$ git clone</br>
+$ git clone　https://github.com/webcamp-nakopa/nagano-cake.git</br>
 $ cd nagano-cake</br>
 
 <h2>推奨環境</h2>
