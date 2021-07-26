@@ -1,5 +1,5 @@
 
-<div class="container mt-5">
+<div class="container">
 
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -11,9 +11,9 @@
     </div>
   <% end %>
   <div class="row">
-    <div  class="col-md-10 col-sm-10 col-xs-10">
+    <div  class="col-md-11 col-sm-11 col-xs-11">
       <table class="table">
-        <thead class="thead-light">
+        <thead>
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -26,23 +26,23 @@
           <% @sum = 0 %>
           <% @cart_items.each do |cart_item| %>
           <tr>
-            <td>
-              <%= attachment_image_tag cart_item.product, :image, :fill, 60, 40, format: 'jpeg', class: "mr-3" %>
+            <td id="td-reset">
+              <%= attachment_image_tag cart_item.product, :image, :fill, 60, 40, format: 'jpeg', class: " mr-3" %>
               <%= cart_item.product.name %>
             </td>
-            <td>
+            <td id="td-reset">
               <%= cart_item.product.add_tax_price.to_s(:price)%>
             </td>
-            <td>
+            <td id="td-reset">
               <%= cart_item.quantity %>
 
             </td>
-            <td>
+            <td id="td-reset">
               <% @subtotal = cart_item.quantity.to_i * cart_item.product.add_tax_price %>
               <%= @subtotal %>
             </td>
-            <td>
-              <%= link_to"削除する", cart_item_path(cart_item), class: "btn btn-danger", method: :delete, data: {confirm: "本当に消しますか？"} %>
+            <td id="td-reset">
+              <%= link_to"削除する", cart_item_path(cart_item), class: "sbtn btn-3", method: :delete, data: {confirm: "本当に消しますか？"} %>
             </td>
           </tr>
           <% @sum += @subtotal %>
@@ -51,39 +51,46 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-2 col-sm-2 col-xs-2">
+  </div>
+  <div class = "row">
+    <div class="col-md-4 col-sm-4 col-xs-4">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>送料</th>
+            <td><%=@order.shipping%></td>
+          </tr>
+          <tr>
+            <th>商品合計</th>
+            <td><%=@sum%></td>
+          </tr>
+          <tr>
+            <th>請求金額</th>
+            <td><%=@sum + @order.shipping %></td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+    <div class="col-md-7 col-sm-7 col-xs-7">
       <table class="table">
         <tr>
-          <th>送料</th>
-          <td><%=@order.shipping%></td>
+          <% if @order.payment_methods == 1 %>
+            <th>支払い方法</th>
+            <td>クレジットカード</td>
+          <%elsif @order.payment_methods == 0 %>
+            <th>支払い方法</th>
+            <td>銀行振り込み</td>
+          <%end %>
         </tr>
         <tr>
-          <th>商品合計</th>
-          <td><%=@sum%></td>
-        </tr>
-        <tr>
-          <th>請求金額</th>
-          <td><%=@sum + @order.shipping %></td>
+          <th>お届け先</th>
+          <td>〒<%= @order.postcode %></br><%= @order.address%></br><%= @order.name%>　様宛</td>
         </tr>
       </table>
     </div>
-  </div>
-  <div class = "row">
-    <table>
-      <tr>
-        <% if @order.payment_methods == 1 %>
-          <th>支払い方法</th>
-          <td>クレジットカード</td>
-        <%elsif @order.payment_methods == 0 %>
-          <th>支払い方法</th>
-          <td>銀行振り込み</td>
-        <%end %>
-      </tr>
-      <tr>
-        <th>お届け先</th>
-        <td><%= @order.postcode %><%= @order.address%></br><%= @order.name%></td>
-      </tr>
-    </table>
+
 
   </div>
 
@@ -99,7 +106,10 @@
 
     <%= f.hidden_field :name %>
     <%= f.hidden_field :total_payment, value: @sum %>
-    <%= f.submit "購入を確定する。", class: "btn btn-success" %>
+    <div class="row">
+      <%= f.submit "購入を確定する。", class: "sbtn btn-7 text-center" %>
+    </div>
+
 
 
   <% end %>
