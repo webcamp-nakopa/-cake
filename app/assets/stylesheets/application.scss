@@ -19,7 +19,7 @@
 // header
 
 .sukima {
- height: 50px;
+ min-height: 50px;
 }
 
 header h1 a{
@@ -222,4 +222,10 @@ $cBlack: #414141;
  left: 100px;
  border-radius: 8px;
 
+}
+
+.alert-view{
+ background-color: $cPurple;
+ color: $cWhite;
+ padding: 5px 10px;
 }
