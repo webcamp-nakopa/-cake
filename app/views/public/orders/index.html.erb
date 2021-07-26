@@ -1,0 +1,52 @@
+
+<div class="container my-2">
+	<div class="row">
+
+		<div class="col-md-12 col-sm-12 col-xs-12">
+      <h2>注文一覧<span class="small">(全<%= @orders.count %>件)</span></h2>
+			<div class="row">
+				<table class="table text-center">
+				  <thead>
+				  	<th>注文日</th>
+				    <th>配送先</th>
+				    <th>注文商品</th>
+				    <th>支払い金額</th>
+					<th>ステータス</th>
+					<th>注文詳細</th>
+				  </thead>
+				  <tbody>
+  					<% @orders.each  do |order| %>
+    					<tr>
+    						<td><%= order.created_at %></td>
+    						<td><%= order.postcode %></br><%= order.address %></br><%= order.name %></td>
+    						<td>
+    							<% order.order_details.each  do |order_detail| %>
+    								<%= order_detail.product.name %></br>
+    							<% end %>
+  							</td>
+								<td><%= order.total_payment %></td>
+								<td>
+									<%if  order.status== 0 %>
+										入金待ち
+									<%elsif order.status == 1 %>
+										入金確認
+									<%elsif order.status == 2 %>
+										製作中
+									<%elsif order.status == 3 %>
+										発送準備中
+									<%elsif order.status == 4 %>
+										発送済み
+									<%end%>
+								</td>
+								<td>
+									<%= link_to '表示する', order_path(order.id), class:"sbtn btn-6"%>
+								</td>
+    					</tr>
+	    			<% end %>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>

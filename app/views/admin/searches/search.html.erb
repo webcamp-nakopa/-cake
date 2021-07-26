@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+      <% if @model == 'customer' %>
+	      <h3>Customers search for "<%= @content %>"</h3>
+        <%= render 'admin/customers/index', customers: @records %>
+      <% elsif @model == 'product' %>
+	      <h3>Products search for "<%= @content %>"</h3>
+        <%= render 'admin/products/index', products: @records %>
+      <% end %>
+		</div>
+	</div>
+</div>

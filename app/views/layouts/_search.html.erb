@@ -1,0 +1,17 @@
+<% if customer_signed_in? %>
+  <div class='my-lg-0'>
+    <%= form_with url: public_search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :content,class: "form-control mr-sm-2" %>
+      <%= f.submit '検索', class: "sbtn btn-6 my-2" %>
+    <% end %>
+  </div>
+<% elsif admin_signed_in? %>
+  <div class='my-lg-0'>
+    <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :content,class: "form-control mr-sm-2" %>
+      <%= f.select :model, options_for_select({ "Customer" => "customer", "Product" => "product" }), class: "dropdown-item" %>
+      <%= f.submit '検索', class: "sbtn btn-6 my-2" %>
+    <% end %>
+  </div>
+<% else %>
+<% end %>

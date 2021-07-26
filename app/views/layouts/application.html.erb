@@ -1,47 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset = "UTF-8"/>
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" charset="UTF-8"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
   </head>
 
   <body>
-    <header class="bg-light">
-      <div class ="container">
-        <div>
-          <h1>LOGO</h1>
-        </div>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">商品一覧<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">会員一覧</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-              </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <main>
+    <div class="container sukima">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key} alert-view") %>
+      <% end %>
+    </div>
+      <%= yield %>
+    </main>
+    <footer class="text-center">
+      <p>©︎なこぱ-DMMwebcamp</p>
+    </footer>
   </body>
 </html>

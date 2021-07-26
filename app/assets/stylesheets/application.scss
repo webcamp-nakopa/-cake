@@ -15,14 +15,279 @@
  */
  @import "bootstrap";
 
- .field_with_errors {
+
+// header
+
+.sukima {
+ min-height: 50px;
+ padding: 0;
+}
+
+header h1 a{
+ font-family:"Times New Roman";
+ font-size: 100px;
+ color: #a03c8b;
+}
+
+.nav-item {
+ width: 130px;
+ background-color: #a03c8b;
+ border-radius: 3px;
+ color: #fff;
+}
+@media screen and (max-width:992px) {
+ .nav-item{
+  width: initial;
+  margin-top: 1px;
+  margin-right: 0px;
+ }
+}
+
+a.nav-link {
+ color: #fff!important;
+}
+
+
+// 全体-----------
+
+body{
+ margin: 0;
+ padding: 0;
+ background-color:#FbF8F3;
+ color:#a03c8b;
+}
+
+body a {
+ color: #a03c8b;
+}
+
+body a:hover {
+ text-decoration: none;
+ color: #a03c8b;
+}
+
+h2, h3, h4, h5, h6 {
+ font-weight: bold;
+}
+
+// table-thead
+
+.table thead th {
+ color: #a03c8b;
+ border-top: 1px solid #a03c8b;
+ border-bottom: 3px double #a03c8b;
+}
+.table tbody th {
+ color: #a03c8b;
+ border-top: 1px solid #a03c8b;
+ border-bottom: 1px solid #a03c8b;
+}
+
+.table tbody td {
+ color: #414141;
+ border-top: 1px solid #a03c8b;
+ border-bottom: 1px solid #a03c8b;
+}
+
+
+.table tbody{
+ border-bottom: 1px solid #a03c8b;
+}
+// customer product table設定
+
+.product thead th {
+ border: 0px;
+}
+
+
+.product tbody td {
+ border: 0px;
+}
+
+// image角丸み
+
+.border-radius {
+ border-radius: 6px;
+}
+
+
+// errormessage表示の設定
+
+.field_with_errors {
   display: contents;
 }
 
-.cart_item_quantit_list {
- width: 200px;
+
+$cWhite: #FbF8F3;
+$cPurple: #a03c8b;
+$cBlack: #414141;
+.sbtn {
+  position: relative;
+  display: inline-block;
+  background-color: $cWhite;
+  border: 1px solid $cPurple;
+  padding: 5px 20px;
+  margin: 10px auto;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: $cPurple;
+  text-decoration: none !important;
+  border-radius: 8px;
+
+  /* ここにボタンのスタイルを追加していこう */
+ &.btn-1{
+    &:hover{
+      background-color: $cBlack;
+      color: $cWhite;
+      font-size: 10px;
+    }
+  }
+  &.btn-2{
+    background-color: white;
+    &:hover{
+      background-color: $cPurple;
+      color: $cWhite;
+      box-shadow: none;
+    }
+  }
+  &.btn-3{
+    background-color: $cBlack;
+    border: 1px solid $cBlack;
+    color: white;
+    &:hover{
+    background-color: $cWhite;
+    border: 1px solid $cBlack;
+    color: $cBlack;
+    }
+  }
+  &.btn-4{
+    background-color: $cWhite;
+    border: 1px solid $cBlack;
+    color: $cBlack;
+    &:hover{
+      background-color: $cPurple;
+      border: 1px solid $cPurple;
+      color: $cWhite;
+      box-shadow: none;
+    }
+  }
+  &.btn-5{
+    background-color: $cWhite;
+    border: 1px solid $cBlack;
+    color: $cBlack;
+    &:hover{
+      background-color: $cBlack;
+      color: $cWhite;
+      box-shadow: none;
+    }
+  }
+   &.btn-6{
+    background-color: $cPurple;
+    border: 1px solid $cPurple;
+    color: $cWhite;
+    &:hover{
+      background-color: $cWhite;
+      color: $cPurple;
+      box-shadow: none;
+    }
+  }
+   &.btn-7{
+    background-color: $cPurple;
+    padding: 0px 10%;
+    border: none;
+    color: white;
+    margin: 0 auto;
+    border-radius: 0;
+    width: 50%;
+    height: 47px;
+    line-height: 50px;
+    &:hover{
+      font-size: 18px;
+
+    }
+  }
+  &.btn-8{
+    background-color: white;
+    padding: 0px 10%;
+    border: none;
+    margin: 0;
+    border-radius: 0;
+    width: 50%;
+    height: 47px;
+    line-height: 50px;
+    &:hover{
+      font-size: 18px;
+
+    }
+  }
 }
 
-.cart_item_quantit {
- width: 50px;
+//about-page
+
+.about-image {
+	background-image: url(fruitcake.png);
+	background-size: cover;
+	width: 100%;
+	height: 400px;
+	position: relative;
+	border-radius: 30px;
+}
+
+.about-text {
+ background-color: #fff;
+ opacity: 0.9;
+ width: 80%;
+ margin: 0 auto;
+ position: absolute;
+ top: 130px;
+ left: 100px;
+ border-radius: 8px;
+}
+
+body {
+ position: relative;
+ padding-bottom: 80px;
+ min-height: 100vh;
+ box-sizing: border-box;
+}
+
+footer {
+ width: 100%;
+ height: 80px;
+ line-height: 80px;
+ position: absolute;
+ text-align: center;
+ bottom: 0;
+}
+
+.alert-view{
+ background-color: $cPurple;
+ color: $cWhite;
+ padding: 5px 10px;
+}
+
+.cake-container{
+  position: relative;
+}
+.cake-img{
+  position: absolute;
+  background-image: url('cake4.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150%;
+  width: 110%;
+  right: -10%;
+  bottom: -20%;
+  z-index: -1;
+}
+.shop-img{
+   position: absolute;
+  background-image: url('shop.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 160%;
+  width: 110%;
+  right: -10%;
+  bottom: -50%;
+  z-index: -1;
 }

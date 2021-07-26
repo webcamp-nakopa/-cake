@@ -1,0 +1,51 @@
+<div class="container mt-5 my-2">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+  <h2>配送先登録 / 一覧</h2>
+
+  <% if @delivery.errors.any? %>
+    <div id="error_explanation">
+     <ul>
+       <% @delivery.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+      </ul>
+    <div>
+  <% end %>
+
+
+    <%= form_with model: @delivery, url: deliveries_path, class: "form-inline", local: true do |f| %>
+      <%= f.label :postcode, "郵便番号", class: "col-md-2 col-sm-2 col-xs-12" %>
+      <%= f.text_field :postcode, class: "col-md-2 col-sm-2 col-xs-12", placeholder: "ハイフンなし" %>
+      <%= f.label :address, "住所", class: "col-md-1 col-sm-1 col-xs-12" %>
+      <%= f.text_field :address, class: "col-md-2 col-sm-2 col-xs-12" %>
+      <%= f.label :name, "宛名", class: "col-md-1 col-sm-1 col-xs-12" %>
+      <%= f.text_field :name, class: "col-md-2 col-sm-2 col-xs-12" %>
+      <%= f.submit "新規登録", class: "sbtn btn-6 ml-5" %>
+    <% end %>
+
+    <div class="row">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @deliveries.each do |delivery| %>
+          <tr>
+            <td><%= delivery.postcode %></td>
+            <td><%= delivery.address %></td>
+            <td><%= delivery.name %></td>
+            <td class="text-center"><%= link_to"編集する", edit_delivery_path(delivery), class: "sbtn btn-6" %></td>
+            <td class="text-center"><%= link_to"削除する", delivery_path(delivery), class: "sbtn btn-3", method: :delete, data: {confirm: "本当に消しますか？"} %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

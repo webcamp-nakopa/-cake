@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
-
+  has_many :order_details
   attachment :image
 
   validates :image, presence: true
@@ -16,6 +16,10 @@ class Product < ApplicationRecord
 
   def self.looks(ids)
     where("genre_id LIKE?","#{ids}")
+  end
+
+  def self.search_for(contents)
+    Product.where("name LIKE?", "%#{contents}%")
   end
 
 end

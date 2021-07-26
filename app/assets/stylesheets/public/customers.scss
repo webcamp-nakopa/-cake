@@ -1,3 +1,23 @@
 // Place all the styles related to the public/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.confirm{
+  width: 150px;
+}
+
+.mypage{
+  width: 200px;
+}
+
+.cake-image-container {
+  position: relative;
+}
+
+.cake-image {
+  width: 90%;
+  height: auto;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

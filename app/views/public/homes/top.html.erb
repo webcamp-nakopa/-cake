@@ -1,2 +1,19 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div id="top">
+    <div><%= image_tag "strawberrycake.png", class: "image2", alt: "strawberrycake" %></div>
+    <div><%= image_tag "flowercake.png", class: "image2", alt: "flower_cake" %></div>
+    <div><%= image_tag "fruitcake.png", class: "image2", alt: "fruit_cake" %></div>
+</div>
+
+<div class="container">
+<ul class="top-banner p-0">
+<% @products.each do |product| %>
+<li>
+　<%= link_to product_path(product.id) do %>
+　　<%= attachment_image_tag product, :image, :fill, 320, 260,  class: "image3" %>
+  <p class="m-0"><%= product.name %></p>
+  <p>¥<%= product.price %></p>
+　<% end %>
+</li>
+<% end %>
+</ul>
+</div>

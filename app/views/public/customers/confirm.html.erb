@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>本当に退会しますか？</h2>
+    <div class="form-group row">
+      <p>退会すると、会員登録情報や</br>
+      これまでの購入履歴が閲覧できなくなります。</br>
+      退会する場合は、「退会する」をクリックしてください。</p>
+    </div>
+    <div class="d-flex">
+      <p class="text-center"><%= link_to '退会しない', customer_path(@customer), class: "sbtn btn-6 confirm" %></p>
+      <p><%= form_with model: @customer, url: customers_destroy_path(@customer), local: true do |f| %>
+        <%= f.hidden_field :is_deleted, value: false %>
+        <%= f.submit '退会する', class: "sbtn btn-5 confirm ml-3" %>
+      <% end %>
+      </p>
+    </div>
+</div>

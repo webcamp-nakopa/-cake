@@ -1,3 +1,39 @@
 // Place all the styles related to the admin/Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// btn設定
+
+.cart-delete-btn {
+ background: #a03c8b;
+ font-size: 1rem;
+ line-height: 26px;
+ width: 26px;
+ height: 26px;
+ border-radius: 50%;
+ display: inline-block;
+ color: #fff;
+ text-align: center;
+}
+
+.cart-delete-btn:hover {
+ background: #fff;
+ color: #a03c8b;
+ border: 1px solid #a03c8b;
+}
+
+.radio-button {
+ height: 20px;
+ line-height: 20px;
+}
+
+// product show text-field
+
+.field-size {
+ width: 200px;
+}
+
+.add-btn {
+ line-height: 35px;
+ width: 160px;
+}

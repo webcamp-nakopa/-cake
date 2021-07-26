@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @cart_items = current_customer.cart_items
   end
@@ -21,7 +23,7 @@ class Public::CartItemsController < ApplicationController
       else
         @product = Product.find_by(id: @cart_item.product_id)
         @genres = Genre.all
-        flash[:alert] = "個数を選択してください"
+        flash[:notice] = "個数を選択してください"
         render template: "public/products/show"
       end
   end
@@ -40,14 +42,14 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
-    flash[:alert] = "#{@cart_item.product.name}の商品をカートから削除しました"
+    flash[:notice] = "#{@cart_item.product.name}の商品をカートから削除しました"
   end
 
   def destroy_all
     @cart_items = current_customer.cart_items
     if @cart_items.destroy_all
       redirect_to cart_items_path
-      flash[:alert] = "カートが空になりました"
+      flash[:notice] = "カートが空になりました"
     else
       render :index
     end

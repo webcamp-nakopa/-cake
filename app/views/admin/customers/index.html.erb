@@ -1,12 +1,53 @@
-<% @customers.each do |customer| %>
+<div class="container">
+  <h2>会員一覧</h2>
 
-  <%= customer.last_name %>
-  <%= customer.first_name %>
-  <%= customer.last_name_kana %>
-  <%= customer.first_name_kana %>
-  <%= customer.postal_code %>
-  <%= customer.address %>
-  <%= customer.telephone_number %>
-  <%= customer.email %>
+   <% if @customer.errors.any? %>
+    <div id="error_explanation">
+     <ul>
+       <% @customer.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+      </ul>
+    <div>
+  <% end %>
 
-<% end %>
+  <div>
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th>姓</th>
+          <th>名</th>
+          <th>セイ</th>
+          <th>メイ</th>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>電話番号</th>
+          <th>メールアドレス</th>
+          <th>会員ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td id="td-reset"><%= customer.last_name %></td>
+            <td id="td-reset"><%= customer.first_name %></td>
+            <td id="td-reset"><%= customer.last_name_kana %></td>
+            <td id="td-reset"><%= customer.first_name_kana %></td>
+            <td id="td-reset"><%= customer.postal_code %></td>
+            <td id="td-reset"><%= customer.address %></td>
+            <td id="td-reset"><%= customer.telephone_number %></td>
+            <td id="td-reset"><%= customer.email %></td>
+            <td id="td-reset">
+                <% if customer.is_deleted == true %>
+                  在籍
+                <% else %>
+                  退会済み
+                <% end %>
+            </td>
+            <td class="text-center" id="td-reset"><%= link_to '会員詳細', admin_customer_path(customer.id), class: "sbtn btn-6" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
