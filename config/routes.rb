@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get 'orders/thank_you' => 'orders#thank_you'
+    get 'orders/confirm' => 'orders#new'
     resources :orders ,only: [:new ,:index ,:show ,:create] do
       collection do
         post :confirm
