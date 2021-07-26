@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="mt-5">会員一覧(admin側)</h2>
+  <h2>会員一覧(admin側)</h2>
 
    <% if @customer.errors.any? %>
     <div id="error_explanation">
@@ -30,22 +30,22 @@
       <tbody>
         <% @customers.each do |customer| %>
           <tr>
-            <td><%= customer.last_name %></td>
-            <td><%= customer.first_name %></td>
-            <td><%= customer.last_name_kana %></td>
-            <td><%= customer.first_name_kana %></td>
-            <td><%= customer.postal_code %></td>
-            <td><%= customer.address %></td>
-            <td><%= customer.telephone_number %></td>
-            <td><%= customer.email %></td>
-            <td>
+            <td id="td-reset"><%= customer.last_name %></td>
+            <td id="td-reset"><%= customer.first_name %></td>
+            <td id="td-reset"><%= customer.last_name_kana %></td>
+            <td id="td-reset"><%= customer.first_name_kana %></td>
+            <td id="td-reset"><%= customer.postal_code %></td>
+            <td id="td-reset"><%= customer.address %></td>
+            <td id="td-reset"><%= customer.telephone_number %></td>
+            <td id="td-reset"><%= customer.email %></td>
+            <td id="td-reset">
                 <% if customer.is_deleted == true %>
-                  <p>在籍</p>
+                  在籍
                 <% else %>
-                  <p>退会済み</p>
+                  退会済み
                 <% end %>
             </td>
-            <td class="text-center"><p><%= link_to '会員詳細', admin_customer_path(customer.id), class: "sbtn btn-6" %></p></td>
+            <td class="text-center" id="td-reset"><%= link_to '会員詳細', admin_customer_path(customer.id), class: "sbtn btn-6" %></td>
           </tr>
         <% end %>
       </tbody>

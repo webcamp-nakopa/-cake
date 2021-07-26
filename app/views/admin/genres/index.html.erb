@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>ジャンル一覧・追加</h2>
+
 
   <% if @genre.errors.any? %>
     <div id="error_explanation">
@@ -11,16 +11,16 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form_with model: @genre, url: "/admin/genres", local: true do |f| %>
-      <p class="my-3">
-        <%= f.label :name, "ジャンル名" %>
-        <%= f.text_field :name %>
-        <%= f.submit"新規登録", class: "sbtn btn-4 m-0" %>
-      </p>
-    <% end %>
-
+  <div class="row">
     <div class="col-md-7 p-0">
+      <h2>ジャンル一覧・追加</h2>
+      <%= form_with model: @genre, url: "/admin/genres", local: true do |f| %>
+        <p class="my-3">
+          <%= f.label :name, "ジャンル名" %>
+          <%= f.text_field :name %>
+          <%= f.submit"新規登録", class: "sbtn btn-4 m-0" %>
+        </p>
+      <% end %>
       <table class="table">
         <thead>
           <tr>

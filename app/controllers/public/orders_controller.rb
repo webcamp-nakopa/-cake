@@ -1,51 +1,72 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order = Order.new
     @customer = current_customer
-    @delivery = Delivery.new
+    @cart_items = @customer.cart_items.joins(:product).where(products: {sales_status: false})
+    if @cart_items.empty?
+      flash[:alert] = "カートの中身が空です。"
+      redirect_to '/products'
+
+    else
+      @order = Order.new
+      @delivery = Delivery.new
+    end
   end
 
   def confirm
+    flash.clear
+
     @order= Order.new(order_params)
     @order_detail = OrderDetail.new
     @customer = current_customer
 
     @cart_items = CartItem.joins(:product).where(products: {sales_status: false}).where(customer_id: @customer.id)
+    if @cart_items.empty?
+      flash[:alert] = "カートの中身が空です。"
+      render :new
+    else
+      @order.customer_id=@customer.id
+      @order.shipping = 800
+
+      if @order.address_kind==1
+        @order.address = @customer.address
+        @order.postcode = @customer.postal_code
+        @order.name = 'aaa'
+
+      elsif @order.address_kind == 2
+        @delivery = Delivery.find_by(id: params[:order][:deliveryid])
+
+        @order.address = @delivery.address
+        @order.postcode = @delivery.postcode
+        @order.name = @delivery.name
+
+      elsif @order.address_kind == 3
+        @newdelivery = Delivery.new
+        @newdelivery.customer_id = @customer.id
+        @newdelivery.postcode = @order.postcode
+        @newdelivery.address = @order.address
+        @newdelivery.name = @order.name
+      end
 
 
-    @order.customer_id=@customer.id
-    @order.shipping = 800
 
-    if @order.address_kind==1
-      @order.address = @customer.address
-      @order.postcode = @customer.postal_code
-      @order.name = 'aaa'
+      @order.status = 0
+      if @order.address_kind==nil or @order.payment_methods==nil
+        if  @order.payment_methods==nil
+          flash[:alert1] = "お支払い方法を選択してください。"
+        end
+        if @order.address_kind==nil
+          flash[:alert2] = "お届け先を選択してください。"
+        end
+        render :new
+      end
 
-    elsif @order.address_kind == 2
-      @delivery = Delivery.find_by(id: params[:order][:deliveryid])
-
-      @order.address = @delivery.address
-      @order.postcode = @delivery.postcode
-      @order.name = @delivery.name
-
-    elsif @order.address_kind == 3
-      @newdelivery = Delivery.new
-      @newdelivery.customer_id = @customer.id
-      @newdelivery.postcode = @order.postcode
-      @newdelivery.address = @order.address
-      @newdelivery.name = @order.name
     end
-
-
-
-    @order.status = 0
-    render :new if @order.address_kind==nil or @order.payment_methods==nil
-
 
 
   end
 
   def create
+
     @order= Order.new(order_params)
 
     @customer = current_customer
