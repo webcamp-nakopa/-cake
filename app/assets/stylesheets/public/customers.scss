@@ -9,3 +9,15 @@
 .mypage{
   width: 200px;
 }
+
+.cake-image-container {
+  position: relative;
+}
+
+.cake-image {
+  width: 90%;
+  height: auto;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
