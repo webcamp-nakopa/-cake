@@ -11,7 +11,7 @@ class Public::ProductsController < ApplicationController
     @product = Product.new
     @word = params[:word]
     @id = Genre.find_by(name: @word).id
-    @products = Product.looks(@id).where(sales_status: false)
+    @products = Product.looks(@id).page(params[:page]).where(sales_status: false)
     render :index
   end
 

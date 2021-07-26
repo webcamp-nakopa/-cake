@@ -30,9 +30,9 @@
       <div class="form-group row">
         <label for="is_deleted" class="col-md-4 col-sm-4 col-xs-12">会員ステータス</label>
         <% if @customer.is_deleted == true %>
-          <p>有効</p>
+          <p>在籍</p>
         <% else %>
-          <p>無効</p>
+          <p>退会済み</p>
         <% end %>
       </div>
       <div>

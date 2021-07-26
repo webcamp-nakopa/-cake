@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 		  <div class="d-flex justify-content-between">
-        <h2 class="mb-3">商品<span class="small">(全<%= @products.count %>件)</span></h2>
+        <h2 class="mb-3">商品一覧<span class="small">(全<%= @products.count %>件)</span></h2>
           <div class="dropdown mr-5">
             <button class="btn dropdown-toggle product-dropdown font-weight-bold"
             type="button" id="dropdownMenu1" data-toggle="dropdown"
@@ -17,7 +17,7 @@
             </div>
           </div>
         </div>
-			<div class="row ml-1">
+			<div class="row">
 					<% @products.each do |product| %>
 					<div class="flex-wrap">
             <%= link_to product_path(product.id) do %>
@@ -27,7 +27,9 @@
             <p>¥<%= product.price %></p>
   				</div>
 				<% end %>
+
 			</div>
+		  <%= paginate @products %>
 		</div>
 	</div>
 </div>
