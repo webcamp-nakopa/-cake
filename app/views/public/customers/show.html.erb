@@ -1,10 +1,10 @@
-
 <div class="container cake-container">
   <div class="cake-img"></div>
     <h2>マイページ</h2>
     <div class="row">
 
       <div class="col-md-6 col-sm-6 col-xs-12">
+
       <div class="form-group row">
         <label for="name" class="col-md-4 col-sm-4 col-xs-12">姓・名</label>
         <%= @customer.last_name %>
@@ -37,7 +37,11 @@
         <p><%= link_to '注文履歴', orders_path, class: "sbtn btn-6 mypage text-center" %></p>
       </div>
     </div>
+
+    <div class="col-md-4 col-sm-4 col-xs-12 cake-image-con">
+      <%= image_tag "cake.png", class: "cake-image" %>
+    </div>
+
   </div>
 </div>
-
 
