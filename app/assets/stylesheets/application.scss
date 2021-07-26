@@ -34,6 +34,13 @@ header h1 a{
  border-radius: 3px;
  color: #fff;
 }
+@media screen and (max-width:992px) {
+ .nav-item{
+  width: initial;
+  margin-top: 1px;
+  margin-right: 0px;
+ }
+}
 
 a.nav-link {
  color: #fff!important;
@@ -256,4 +263,18 @@ footer {
  background-color: $cPurple;
  color: $cWhite;
  padding: 5px 10px;
+}
+
+.cake-container{
+  position: relative;
+}
+.cake-img{
+  position: absolute;
+  background-image: url('cake4.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150%;
+  width: 110%;
+  right: -10%;
+  bottom: -20%;
 }
