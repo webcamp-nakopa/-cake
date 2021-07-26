@@ -20,6 +20,7 @@
 
 .sukima {
  min-height: 50px;
+ padding: 0;
 }
 
 header h1 a{
@@ -277,5 +278,16 @@ footer {
   width: 110%;
   right: -10%;
   bottom: -20%;
+  z-index: -1;
+}
+.shop-img{
+   position: absolute;
+  background-image: url('shop.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 160%;
+  width: 110%;
+  right: -10%;
+  bottom: -50%;
   z-index: -1;
 }

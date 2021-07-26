@@ -30,7 +30,7 @@ class Public::OrdersController < ApplicationController
       if @order.address_kind==1
         @order.address = @customer.address
         @order.postcode = @customer.postal_code
-        @order.name = 'aaa'
+        @order.name = @customer.first_name + " "+ @customer.last_name
 
       elsif @order.address_kind == 2
         @delivery = Delivery.find_by(id: params[:order][:deliveryid])
@@ -98,7 +98,7 @@ class Public::OrdersController < ApplicationController
         @newdelivery.postcode = @order.postcode
         @newdelivery.address = @order.address
         @newdelivery.name = @order.name
-        if @newdelivery.save
+        unless @newdelivery.save
           render :new
         end
       end
