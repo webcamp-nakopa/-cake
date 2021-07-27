@@ -33,9 +33,17 @@
         <tr>
           <th>注文ステータス</th>
           <td>
-            <%= form_with model: @order ,url: admin_order_path ,local: true do |f| %>
-              <%= f.select :status, [["入金待ち", 0], ["入金確認", 1], ["製作中", 2], ["発送準備中", 3], ["発送済み", 4]] %>
-              <%= f.submit"変更", class: "change-btn" %>
+            <% if @order.status ==1 or @order.status==2%>
+             <% if @order.status ==1 %>
+               入金確認
+             <% elsif @order.status == 2%>
+               製作中
+             <%end%>
+            <%else %>
+              <%= form_with model: @order ,url: admin_order_path ,local: true do |f| %>
+                <%= f.select :status, [["入金待ち", 0], ["入金確認", 1], ["製作中", 2], ["発送準備中", 3], ["発送済み", 4]] %>
+                <%= f.submit"変更", class: "change-btn" %>
+              <% end %>
             <% end %>
           </td>
         </tr>
@@ -58,17 +66,24 @@
           <tbody>
               <%@order.order_details.each do |f|%>
                   <tr>
-                      <td><%=f.product.name%></td>
-                      <td><%=f.product.price%></td>
-                      <td><%=f.quantity%></td>
-                      <td><%=f.price%></td>
-                      <td>
+                    <td><%=f.product.name%></td>
+                    <td><%=f.product.price%></td>
+                    <td><%=f.quantity%></td>
+                    <td><%=f.price%></td>
+                    <td>
+                      <% if f.production_status == 0 or @order.status ==4%>
+                        <%if f.production_status == 0%>
+                          着手不可
+                        <% elsif @order.status == 4%>
+                          制作完了
+                        <%end%>
+                      <%else%>
                         <%= form_with model: f ,url: admin_order_detail_path(f) ,local: true do |f| %>
                           <%= f.select :production_status, [["着手不可", 0], ["制作待ち", 1], ["製作中", 2], ["制作完了", 3]] %>
                           <%= f.submit"変更", class: "change-btn" %>
                         <% end %>
-                      </td>
-
+                      <%end%>
+                    </td>
                   </tr>
               <%end%>
           </tbody>
