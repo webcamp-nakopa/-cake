@@ -1,6 +1,5 @@
 <h1>Nagano Cake (概要)</h1>
 ⻑野県にある⼩さな洋菓⼦店ながのCAKE」の商品を通販するためのECサイト
-「![Uploading top page.png…]()
 
 <h2>アプリケーションの機能</h2>
 <h3>【顧客側】</h3>
